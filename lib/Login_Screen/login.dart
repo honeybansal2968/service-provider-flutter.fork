@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../screens/onboarding_page.dart';
 
@@ -9,6 +10,16 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
+    print("sign in called");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,6 +52,7 @@ class _MyLoginState extends State<MyLogin> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: emailController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
@@ -54,6 +66,7 @@ class _MyLoginState extends State<MyLogin> {
                             height: 30,
                           ),
                           TextField(
+                            controller: passwordController,
                             style: TextStyle(),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -82,13 +95,14 @@ class _MyLoginState extends State<MyLogin> {
                                     color: Colors.white,
                                     onPressed: () {
                                       // Perform login
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              Onboarding_page(),
-                                        ),
-                                      );
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) =>
+                                      //         Onboarding_page(),
+                                      //   ),
+                                      // );
+                                      signIn();
                                     },
                                     icon: Icon(
                                       Icons.arrow_forward,

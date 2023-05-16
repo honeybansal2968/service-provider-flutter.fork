@@ -1,3 +1,5 @@
+import 'package:ServiceProviderApp/Login_Screen/auth_screen.dart';
+import 'package:ServiceProviderApp/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ServiceProviderApp/Main_Screen/sos_screen.dart';
@@ -23,7 +25,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await MongoDatabase.connect();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   FirebaseAuth.instance.authStateChanges().listen((User? user) {
     if (user != null) {
       print(user.uid);
@@ -53,13 +57,14 @@ void main() async {
           fontFamily: "font",
           useMaterial3: true,
           colorScheme: lightColorScheme),
-      initialRoute: '/',
+      initialRoute: 'auth',
       routes: {
         '/': (context) => SplashScreen(),
         // 'display': (context) => MongoDBDisplay(),
         'logo': (context) => Logo(),
         'drawer_screen': (context) => DrawerScreen(),
         'phone': (context) => MyPhone(),
+        'auth': (context) => AuthScreen(),
         'login': (context) => MyLogin(),
         'verify': (context) => MyVerify(),
         'signup_form': (context) => SignUpForm(),

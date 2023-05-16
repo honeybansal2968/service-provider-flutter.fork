@@ -1,3 +1,5 @@
+import 'package:ServiceProviderApp/Login_Screen/auth_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ServiceProviderApp/drawer_screens/drawer_screen.dart';
 import 'package:ServiceProviderApp/booking_screens/booking.dart';
@@ -101,8 +103,14 @@ class _MenuScreenState extends State<MenuScreen> {
                       ListTile(
                         leading: Icon(Icons.logout),
                         title: Text('Log Out'),
-                        onTap: () {
-                          // Add onTap logic here
+                        onTap: () async {
+                          await FirebaseAuth.instance.signOut();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AuthScreen(),
+                            ),
+                          );
                         },
                       ),
                     ],

@@ -1,63 +1,33 @@
 {
   "project_info": {
-    "project_number": "500909669001",
-    "firebase_url": "https://resister-auth-default-rtdb.firebaseio.com",
-    "project_id": "resister-auth",
-    "storage_bucket": "resister-auth.appspot.com"
+    "project_number": "937341298462",
+    "project_id": "helpy-moto-62e23",
+    "storage_bucket": "helpy-moto-62e23.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:500909669001:android:3a2835b20589036f772458",
+        "mobilesdk_app_id": "1:937341298462:android:49c05e650ed4c4d59b0b0f",
         "android_client_info": {
           "package_name": "com.example.demo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "500909669001-6c1nck896vsd0pn4mvs5jkqdfhj3q5bj.apps.googleusercontent.com",
+          "client_id": "937341298462-em6nhsct6f3aggk60n2draeokru26p99.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCMIBPEWY3skAh1LkYFVkmw04eTrGOOriQ"
+          "current_key": "AIzaSyAqMyqH-HOqVkcjZzHroDlFUsI_82gHsz0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "500909669001-6c1nck896vsd0pn4mvs5jkqdfhj3q5bj.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:500909669001:android:b3834d6997a0c166772458",
-        "android_client_info": {
-          "package_name": "io.invertase.firebase"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "500909669001-6c1nck896vsd0pn4mvs5jkqdfhj3q5bj.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCMIBPEWY3skAh1LkYFVkmw04eTrGOOriQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "500909669001-6c1nck896vsd0pn4mvs5jkqdfhj3q5bj.apps.googleusercontent.com",
+              "client_id": "937341298462-em6nhsct6f3aggk60n2draeokru26p99.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
