@@ -1,4 +1,4 @@
-# demo
+# authentication
 
 A new Flutter project.
 
