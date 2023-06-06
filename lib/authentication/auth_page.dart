@@ -1,4 +1,4 @@
-// import 'package:authentication/authentication/login_or_register_page.dart';
+// import 'package:authentication/authentication/provider_type_select.dart';
 // import 'package:flutter/material.dart';
 // import 'homepage.dart';
 
@@ -14,7 +14,7 @@
 //               if (snapshot.hasData) {
 //                 return HomePage(); //user logged in
 //               }
-//               return LoginOrRegisterPage(); //user not logged in
+//               return ProviderTogglePage(); //user not logged in,this page will take his identity for further uses and direct him to login/signup
 //             }));
 //   }
 // }

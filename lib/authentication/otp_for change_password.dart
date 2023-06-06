@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
-class OTPVerifyPage extends StatefulWidget {
-  OTPVerifyPage({super.key});
+class OTPVerifyForPasswordChangePage extends StatefulWidget {
+  OTPVerifyForPasswordChangePage({super.key});
 
   @override
-  State<OTPVerifyPage> createState() => _OTPVerifyPageState();
+  State<OTPVerifyForPasswordChangePage> createState() =>
+      _OTPVerifyForPasswordChangePageState();
 }
 
-class _OTPVerifyPageState extends State<OTPVerifyPage> {
+class _OTPVerifyForPasswordChangePageState
+    extends State<OTPVerifyForPasswordChangePage> {
   // text editing controllers
   final otpController = TextEditingController();
 
@@ -31,7 +33,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
             Container(
               padding: const EdgeInsets.only(left: 35, top: 30),
               child: const Text(
-                'OTP\nConfirmation',
+                'Verification',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
@@ -47,7 +49,8 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                       child: Column(
                         children: [
                           const Text(
-                            'Check your contact number for the otp!',
+                            'Enter the code sent to the number ',
+                            textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white, fontSize: 25),
                           ),
                           const SizedBox(

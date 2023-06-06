@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 
-class OTPVerifyPage extends StatefulWidget {
-  OTPVerifyPage({super.key});
+class ChangePassword extends StatefulWidget {
+  ChangePassword({super.key});
 
   @override
-  State<OTPVerifyPage> createState() => _OTPVerifyPageState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _OTPVerifyPageState extends State<OTPVerifyPage> {
+class _ChangePasswordState extends State<ChangePassword> {
   // text editing controllers
-  final otpController = TextEditingController();
+  final contactController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
             Container(
               padding: const EdgeInsets.only(left: 35, top: 30),
               child: const Text(
-                'OTP\nConfirmation',
+                'Password\nReset',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
@@ -46,19 +45,37 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                       margin: const EdgeInsets.only(left: 35, right: 35),
                       child: Column(
                         children: [
-                          const Text(
-                            'Check your contact number for the otp!',
-                            style: TextStyle(color: Colors.white, fontSize: 25),
-                          ),
+                          // const Text(
+                          //   'Check your contact number for the otp!',
+                          //   style: TextStyle(color: Colors.white, fontSize: 25),
+                          // ),
                           const SizedBox(
                             height: 30,
                           ),
-                          Pinput(
-                            onCompleted: (pin) => print(pin),
-                            defaultPinTheme: defaultPinTheme,
-                            controller: otpController,
-                            length: 6,
+                          TextField(
+                            keyboardType: TextInputType.number,
+                            controller: contactController,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                hintText: "Mobile No.",
+                                hintStyle: const TextStyle(color: Colors.white),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
                           ),
+////////////////////////////////////////////////////////////////////////////////
                           const SizedBox(
                             height: 40,
                           ),
@@ -68,17 +85,13 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
-                                'Did\'nt recieved code?',
-                                style: TextStyle(color: Colors.white),
-                              ),
                               const SizedBox(width: 4),
                               GestureDetector(
                                 onTap: () {
-                                  //resend logic here
+                                  Navigator.pop(context);
                                 },
                                 child: const Text(
-                                  'Resend',
+                                  'Back to login',
                                   style: TextStyle(
                                     decoration: TextDecoration.underline,
                                     color: Colors.white,
@@ -93,7 +106,7 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                'Verify',
+                                'Fetch OTP',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 27,
@@ -127,13 +140,3 @@ class _OTPVerifyPageState extends State<OTPVerifyPage> {
     );
   }
 }
-
-final defaultPinTheme = PinTheme(
-  width: 56,
-  height: 56,
-  textStyle: const TextStyle(fontSize: 20, color: Colors.white),
-  decoration: BoxDecoration(
-    border: Border.all(color: const Color.fromRGBO(234, 239, 243, 1)),
-    borderRadius: BorderRadius.circular(20),
-  ),
-);

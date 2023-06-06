@@ -1,3 +1,5 @@
+import 'package:authentication/components/square_tile.dart';
+import 'package:authentication/global_var.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
@@ -13,6 +15,8 @@ class _SignupPageState extends State<SignupPage> {
   final emailOrContactController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+
+  String serviceType = providerType;
 
   // sign user in method
   void signUserUp() async {
@@ -32,9 +36,7 @@ class _SignupPageState extends State<SignupPage> {
       Navigator.pop(context);
     } catch (e) {
       Navigator.pop(context);
-      if (e == 'user-not-found') {
-        wrongEmailMessage();
-      } else if (e == 'wrong-password') {
+      if (e == 'wrong-password') {
         wrongPasswordMessage();
       }
     }
@@ -43,16 +45,6 @@ class _SignupPageState extends State<SignupPage> {
   bool isAllDigits(String text) {
     final numericRegex = RegExp(r'^[0-9]+$');
     return numericRegex.hasMatch(text);
-  }
-
-  void wrongEmailMessage() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            title: Text('Incorrect Email!'),
-          );
-        });
   }
 
   void passwordNotMatchedMessage() {
@@ -93,15 +85,23 @@ class _SignupPageState extends State<SignupPage> {
           children: [
             Container(
               padding: const EdgeInsets.only(left: 35, top: 30),
-              child: const Text(
-                'Create\nAccount',
-                style: TextStyle(color: Colors.white, fontSize: 33),
+              child: Column(
+                children: [
+                  const Text(
+                    'Create\nAccount',
+                    style: TextStyle(color: Colors.white, fontSize: 33),
+                  ),
+                  Text(
+                    serviceType,
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ],
               ),
             ),
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.28),
+                    top: MediaQuery.of(context).size.height * 0.25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -110,6 +110,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: Column(
                         children: [
                           TextField(
+                            keyboardType: TextInputType.number,
                             controller: emailOrContactController,
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
@@ -125,7 +126,7 @@ class _SignupPageState extends State<SignupPage> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Email/Mobile No.",
+                                hintText: "Mobile No.",
                                 hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -209,23 +210,64 @@ class _SignupPageState extends State<SignupPage> {
                               )
                             ],
                           ),
-                          const SizedBox(
-                            height: 40,
+                          const SizedBox(height: 30),
+
+                          // or continue with
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 25.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Divider(
+                                    thickness: 0.5,
+                                    color: Colors.grey[400],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Text(
+                                    'Or continue with',
+                                    style: TextStyle(color: Colors.grey[700]),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Divider(
+                                    thickness: 0.5,
+                                    color: Colors.grey[400],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
+
+                          const SizedBox(height: 20),
+
+                          // google sign in button
+                          GestureDetector(
+                            onTap: () {},
+                            child: const SquareTile(
+                                imagePath: 'lib/assets/images/google2.png'),
+                          ),
+
+                          const SizedBox(height: 15),
+
+                          // not a member? register now
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 'Already a member?',
-                                style: TextStyle(color: Colors.grey[700]),
+                                style: TextStyle(color: Colors.white),
                               ),
                               const SizedBox(width: 4),
                               GestureDetector(
                                 onTap: widget.onTap,
                                 child: const Text(
-                                  'Login here          ',
+                                  'Login here        ',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color(0xFF68CAF0),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
