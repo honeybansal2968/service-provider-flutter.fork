@@ -14,14 +14,14 @@ class MyButton extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.symmetric(horizontal: 50),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: const Color.fromARGB(255, 80, 85, 97),
           borderRadius: BorderRadius.circular(30),
         ),
         child: Center(
           child: Text(
             text,
             style: const TextStyle(
-              color: Color.fromARGB(255, 80, 85, 97),
+              color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),

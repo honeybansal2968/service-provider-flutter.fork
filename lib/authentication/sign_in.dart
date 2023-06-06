@@ -1,3 +1,4 @@
+import 'package:authentication/authentication/forgot_password.dart';
 import 'package:authentication/components/square_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -24,16 +25,6 @@ class _SigninPageState extends State<SigninPage> {
   bool isAllDigits(String text) {
     final numericRegex = RegExp(r'^[0-9]+$');
     return numericRegex.hasMatch(text);
-  }
-
-  void wrongEmailMessage() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            title: Text('Incorrect Email!'),
-          );
-        });
   }
 
   void wrongNumberMessage() {
@@ -89,12 +80,13 @@ class _SigninPageState extends State<SigninPage> {
                         child: Column(
                           children: [
                             TextField(
+                              keyboardType: TextInputType.number,
                               controller: emailOrNumberController,
                               style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
-                                  hintText: "Email",
+                                  hintText: "Mobile No.",
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   )),
@@ -124,7 +116,15 @@ class _SigninPageState extends State<SigninPage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ChangePassword(),
+                                        ),
+                                      );
+                                    },
                                     child: Text(
                                       'Forgot Password?',
                                       style: TextStyle(color: Colors.grey[600]),
@@ -159,7 +159,7 @@ class _SigninPageState extends State<SigninPage> {
                               ],
                             ),
 
-                            const SizedBox(height: 50),
+                            const SizedBox(height: 100),
 
                             // or continue with
                             Padding(
