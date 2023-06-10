@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:authentication/models/userModel.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
@@ -42,7 +41,6 @@ class AuthService {
           // Access the user data
           final user = userModel.user;
           return user;
-         
         } else {
           throw Exception('Failed to sign in with Google');
         }
