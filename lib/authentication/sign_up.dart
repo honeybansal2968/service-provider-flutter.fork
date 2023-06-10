@@ -1,10 +1,13 @@
+import 'package:authentication/authentication/homepage.dart';
 import 'package:authentication/components/square_tile.dart';
 import 'package:authentication/global_var.dart';
+import 'package:authentication/models/userModel.dart';
+import 'package:authentication/serivces/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
   final Function()? onTap;
-  SignupPage({super.key, required this.onTap});
+  const SignupPage({super.key, required this.onTap});
 
   @override
   State<SignupPage> createState() => _SignupPageState();
@@ -15,6 +18,8 @@ class _SignupPageState extends State<SignupPage> {
   final emailOrContactController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+
+  bool _loading = false;
 
   String serviceType = providerType;
 
@@ -246,9 +251,39 @@ class _SignupPageState extends State<SignupPage> {
 
                           // google sign in button
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () async {
+                              setState(() {
+                                _loading = true;
+                              });
+                              //await AuthService.logOut();
+                              try {
+                                User data = await AuthService.signInWithGoogle(
+                                    serviceType);
+                                setState(() {
+                                  _loading = false;
+                                });
+                                if (context.mounted) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            HomePage(user: data)),
+                                  );
+                                }
+                              } catch (err) {
+                                setState(() {
+                                  _loading = false;
+                                });
+                                await AuthService.logOut();
+                              }
+                            },
                             child: const SquareTile(
                                 imagePath: 'lib/assets/images/google2.png'),
+                          ),
+                          const SizedBox(height: 15),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(_loading ? "Loading..." : ""),
                           ),
 
                           const SizedBox(height: 15),
@@ -257,7 +292,7 @@ class _SignupPageState extends State<SignupPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 'Already a member?',
                                 style: TextStyle(color: Colors.white),
                               ),

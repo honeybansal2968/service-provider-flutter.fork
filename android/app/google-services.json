@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "492641475522",
+    "project_id": "helpy-moto-388307",
+    "storage_bucket": "helpy-moto-388307.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492641475522:android:7732dcf0460cdc8828945b",
+        "android_client_info": {
+          "package_name": "com.example.authentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492641475522-g35a233v6meen07nenmuln2vr8pa8687.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.authentication",
+            "certificate_hash": "47821643d93c7dc6ac1e327956d14953167af3c9"
+          }
+        },
+        {
+          "client_id": "492641475522-m3g17mvjspn42c9pb6mn2phd3084hs4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy6xsJe6O7SYAoGFDgsjfihrpkzjn04Dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492641475522-6lu77i986mc7jubksogi8ghruajpsvfp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492641475522:android:04c45f2ea096b58228945b",
+        "android_client_info": {
+          "package_name": "com.example.reelsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492641475522-qfmokraetuncrbntck4ugleiecps1cdr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reelsapp",
+            "certificate_hash": "47821643d93c7dc6ac1e327956d14953167af3c9"
+          }
+        },
+        {
+          "client_id": "492641475522-v2ahdcp34fq46opuofjuf8ii782crv8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reelsapp",
+            "certificate_hash": "7c6fa319c7e781eafc184ee5b47dce06eb9c0753"
+          }
+        },
+        {
+          "client_id": "492641475522-m3g17mvjspn42c9pb6mn2phd3084hs4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy6xsJe6O7SYAoGFDgsjfihrpkzjn04Dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492641475522-6lu77i986mc7jubksogi8ghruajpsvfp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
