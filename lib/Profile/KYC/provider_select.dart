@@ -1,3 +1,5 @@
+import 'package:authentication/Profile/KYC/Cleaner%20KYC/cleaner_path.dart';
+import 'package:authentication/Profile/KYC/Driver%20KYC/driver_path.dart';
 import 'package:authentication/Profile/KYC/Mechanic%20KYC/mechanic_path.dart';
 import 'package:authentication/components/my_button.dart';
 import 'package:authentication/global_var.dart';
@@ -70,7 +72,7 @@ class _ProviderSelectState extends State<ProviderSelect> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => MechanicKYCPath(),
+                                    builder: (context) => CleanerKYCPath(),
                                   ),
                                 );
                               },
@@ -83,7 +85,7 @@ class _ProviderSelectState extends State<ProviderSelect> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => MechanicKYCPath(),
+                                    builder: (context) => DriverKYCPath(),
                                   ),
                                 );
                               },
