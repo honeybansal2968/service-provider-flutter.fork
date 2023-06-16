@@ -1,7 +1,7 @@
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page1.dart';
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page2.dart';
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page3.dart';
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page4.dart';
+import 'package:authentication/Profile/no%20need%20to%20use/KYC/Mechanic%20KYC/page2.dart';
+import 'package:authentication/Profile/no%20need%20to%20use/KYC/Mechanic%20KYC/page3.dart';
+import 'package:authentication/Profile/no%20need%20to%20use/KYC/Mechanic%20KYC/page4.dart';
+import 'package:authentication/Profile/no%20need%20to%20use/KYC/Mechanic%20KYC/page5.dart';
 import 'package:flutter/material.dart';
 
 class MechanicKYCPath extends StatefulWidget {
@@ -39,7 +39,7 @@ class _MechanicKYCPathState extends State<MechanicKYCPath>
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text(
-          'Upload KYC 1',
+          'Upload KYC',
           style: TextStyle(fontSize: 30),
         ),
         bottom: PreferredSize(
@@ -94,11 +94,11 @@ class _MechanicKYCPathState extends State<MechanicKYCPath>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
-          Center(child: MachanicPage1()),
-          Center(child: MachanicPage2()),
-          Center(child: MachanicPage3()),
-          Center(child: MachanicPage4()),
+        children: [
+          Center(child: Page2()),
+          Center(child: Page3()),
+          Center(child: Page4()),
+          Center(child: Page5()),
         ],
       ),
     );

@@ -1,16 +1,16 @@
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/page5.dart';
+import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page4.dart';
 import 'package:authentication/components/my_button_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class Page4 extends StatefulWidget {
-  const Page4({Key? key}) : super(key: key);
+class MachanicPage3 extends StatefulWidget {
+  const MachanicPage3({Key? key}) : super(key: key);
 
   @override
-  State<Page4> createState() => _Page4State();
+  State<MachanicPage3> createState() => _MachanicPage3State();
 }
 
-class _Page4State extends State<Page4> {
+class _MachanicPage3State extends State<MachanicPage3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +41,7 @@ class _Page4State extends State<Page4> {
                     ),
                     TextField(
                       style: const TextStyle(),
-                      obscureText: true,
+                      //obscureText: true,
                       decoration: InputDecoration(
                         fillColor: const Color(0XFFe8f7f0),
                         filled: true,
@@ -62,7 +62,7 @@ class _Page4State extends State<Page4> {
                     ),
                     TextField(
                       style: const TextStyle(),
-                      obscureText: true,
+                      // obscureText: true,
                       decoration: InputDecoration(
                         fillColor: const Color(0XFFe8f7f0),
                         filled: true,
@@ -83,7 +83,7 @@ class _Page4State extends State<Page4> {
                     ),
                     TextField(
                       style: const TextStyle(),
-                      obscureText: true,
+                      //obscureText: true,
                       decoration: InputDecoration(
                         fillColor: const Color(0XFFe8f7f0),
                         filled: true,
@@ -106,7 +106,7 @@ class _Page4State extends State<Page4> {
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       style: const TextStyle(),
-                      obscureText: true,
+                      // obscureText: true,
                       decoration: InputDecoration(
                         fillColor: const Color(0XFFe8f7f0),
                         filled: true,
@@ -116,26 +116,21 @@ class _Page4State extends State<Page4> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 120),
+                    MyButton2(
+                      text: 'Next',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MachanicPage4(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 35),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 30),
-            child: MyButton2(
-              text: 'Next',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Page5(),
-                  ),
-                );
-              },
             ),
           ),
         ],
