@@ -1,6 +1,10 @@
 import 'package:authentication/authentication/forgot_password.dart';
+import 'package:authentication/authentication/homepage.dart';
 import 'package:authentication/components/square_tile.dart';
+import 'package:authentication/global_var.dart';
+import 'package:authentication/serivces/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:authentication/models/userModel.dart';
 
 class SigninPage extends StatefulWidget {
   final Function()? onTap;
@@ -13,6 +17,8 @@ class SigninPage extends StatefulWidget {
 class _SigninPageState extends State<SigninPage> {
   final emailOrNumberController = TextEditingController();
   final passwordController = TextEditingController();
+
+  bool _loading = false;
 
   void signIn() async {
     if (isAllDigits(emailOrNumberController.toString())) {
@@ -71,7 +77,7 @@ class _SigninPageState extends State<SigninPage> {
               SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.35),
+                      top: MediaQuery.of(context).size.height * 0.4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -91,21 +97,7 @@ class _SigninPageState extends State<SigninPage> {
                                     borderRadius: BorderRadius.circular(10),
                                   )),
                             ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            TextField(
-                              controller: passwordController,
-                              style: const TextStyle(),
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  fillColor: Colors.grey.shade100,
-                                  filled: true,
-                                  hintText: "Password",
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  )),
-                            ),
+
                             const SizedBox(height: 10),
 
                             // forgot password?
@@ -195,9 +187,40 @@ class _SigninPageState extends State<SigninPage> {
 
                             // google sign in button
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () async {
+                                setState(() {
+                                  _loading = true;
+                                });
+                                //await AuthService.logOut();
+                                try {
+                                  User data =
+                                      await AuthService.signInWithGoogle(
+                                          providerType);
+                                  setState(() {
+                                    _loading = false;
+                                  });
+                                  if (context.mounted) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HomePage(user: data)),
+                                    );
+                                  }
+                                } catch (err) {
+                                  setState(() {
+                                    _loading = false;
+                                  });
+                                  await AuthService.logOut();
+                                }
+                              },
                               child: const SquareTile(
                                   imagePath: 'lib/assets/images/google2.png'),
+                            ),
+                            const SizedBox(height: 15),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(_loading ? "Loading..." : ""),
                             ),
 
                             const SizedBox(height: 15),

@@ -1,4 +1,4 @@
-import 'package:authentication/Profile/KYC/provider_select.dart';
+import 'package:authentication/authentication/provider_type_select.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       //debugShowCheckedModeBanner: false,
-      home: ProviderSelect(),
+      home: ProviderTogglePage(),
     );
   }
 }
