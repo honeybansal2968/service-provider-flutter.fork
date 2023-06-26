@@ -242,7 +242,7 @@ class _SignupPageState extends State<SignupPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            HomePage(user: data)),
+                                            HomePage2(user: data)),
                                   );
                                 }
                               } catch (err) {

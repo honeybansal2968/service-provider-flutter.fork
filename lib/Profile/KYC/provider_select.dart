@@ -6,7 +6,7 @@ import 'package:authentication/global_var.dart';
 import 'package:flutter/material.dart';
 
 class ProviderSelect extends StatefulWidget {
-  ProviderSelect({super.key});
+  const ProviderSelect({super.key});
 
   @override
   State<ProviderSelect> createState() => _ProviderSelectState();

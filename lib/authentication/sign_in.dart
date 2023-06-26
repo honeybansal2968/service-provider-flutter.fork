@@ -204,7 +204,7 @@ class _SigninPageState extends State<SigninPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              HomePage(user: data)),
+                                              HomePage2(user: data)),
                                     );
                                   }
                                 } catch (err) {

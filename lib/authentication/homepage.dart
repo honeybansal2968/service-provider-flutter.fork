@@ -1,16 +1,18 @@
 import 'package:authentication/models/userModel.dart';
 import 'package:authentication/serivces/auth_service.dart';
 import 'package:flutter/material.dart';
+//this page was used for testing the login success as a landing page.
+// the code is still kept because it shows the login info which is yet to be integrated into the main appplication
 
-class HomePage extends StatefulWidget {
+class HomePage2 extends StatefulWidget {
   final User user;
-  const HomePage({super.key, required this.user});
+  const HomePage2({super.key, required this.user});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage2> createState() => _HomePage2State();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePage2State extends State<HomePage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
