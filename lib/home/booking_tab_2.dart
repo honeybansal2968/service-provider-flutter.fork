@@ -30,169 +30,157 @@ class _BookingPageState extends State<BookingPage> {
         ),
         body: TabBarView(
           children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  FutureBuilder(
-                    future: getUsersDetails(),
-                    builder: (context, AsyncSnapshot snapshot) {
-                      if (snapshot.hasData) {
-                        final usersDetails = snapshot.data as List<UserDetails>;
+            FutureBuilder(
+              future: getUsersDetails(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  final usersDetails = snapshot.data as List<UserDetails>;
 
-                        // Filter the list based on the selected tab
-                        final filteredList = selectedTabIndex == 0
-                            ? usersDetails
-                            : usersDetails.where((userDetails) =>
-                                [
-                                  'pending',
-                                  'hold',
-                                  'completed'
-                                ][selectedTabIndex - 1]
-                                    .toLowerCase() ==
-                                userDetails.status.toLowerCase());
+                  // Filter the list based on the selected tab
+                  final filteredList = selectedTabIndex == 0
+                      ? usersDetails
+                      : usersDetails.where((userDetails) =>
+                          ['pending', 'hold', 'completed'][selectedTabIndex - 1]
+                              .toLowerCase() ==
+                          userDetails.status.toLowerCase());
 
-                        return Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Column(
-                            children: filteredList
-                                .map((userDetails) => GestureDetector(
-                                      onTap: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              AlertDialog(
-                                            title: Text(userDetails.name),
-                                            content: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                    'Location: ${userDetails.subtitle}'),
-                                                const Text('Distance: 2 km'),
-                                                const SizedBox(height: 10),
-                                                Text(userDetails.description),
-                                                const SizedBox(height: 20),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    ElevatedButton(
-                                                      onPressed: () {},
-                                                      child:
-                                                          const Text('Message'),
-                                                    ),
-                                                    ElevatedButton(
-                                                      onPressed: () {},
-                                                      child:
-                                                          const Text('Cancel'),
-                                                    ),
-                                                    ElevatedButton(
-                                                      onPressed: () {},
-                                                      child:
-                                                          const Text('Confirm'),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: SizedBox(
-                                        height: 155,
-                                        child: Card(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                          ),
-                                          child: Row(
+                  return Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: ListView(
+                      children: filteredList
+                          .map((userDetails) => GestureDetector(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
+                                      title: Text(userDetails.name),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                              'Location: ${userDetails.subtitle}'),
+                                          const Text('Distance: 2 km'),
+                                          const SizedBox(height: 10),
+                                          Text(userDetails.description),
+                                          const SizedBox(height: 20),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
                                             children: [
-                                              CircleAvatar(
-                                                radius: 50,
-                                                backgroundImage: NetworkImage(
-                                                    userDetails.image),
+                                              ElevatedButton(
+                                                onPressed: () {},
+                                                child: const Text('Message'),
                                               ),
-                                              const SizedBox(width: 30),
-                                              Expanded(
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      userDetails.name,
-                                                      style: const TextStyle(
-                                                          fontSize: 20),
-                                                    ),
-                                                    Text(
-                                                      '${userDetails.subtitle}, ',
-                                                      style: const TextStyle(
-                                                          fontSize: 16),
-                                                    ),
-                                                    Text(
-                                                      userDetails.description,
-                                                      style: const TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.blue,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      'Status: ${userDetails.status}',
-                                                      style: const TextStyle(
-                                                          fontSize: 16),
-                                                    ),
-                                                  ],
+                                              ElevatedButton(
+                                                onPressed: () {},
+                                                child: const Text('Cancel'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {},
+                                                child: const Text('Confirm'),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: SizedBox(
+                                  height: 155,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 50,
+                                          backgroundImage:
+                                              NetworkImage(userDetails.image),
+                                        ),
+                                        const SizedBox(width: 30),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                userDetails.name,
+                                                style: const TextStyle(
+                                                    fontSize: 20),
+                                              ),
+                                              Text(
+                                                '${userDetails.subtitle}, ',
+                                                style: const TextStyle(
+                                                    fontSize: 16),
+                                              ),
+                                              Text(
+                                                userDetails.description,
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.blue,
                                                 ),
                                               ),
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  IconButton(
-                                                    icon: const Icon(Icons
-                                                        .chat_bubble_outline),
-                                                    onPressed: () {},
-                                                    color: Colors
-                                                        .black, // set the color for chat icon button
-                                                  ),
-                                                  IconButton(
-                                                    icon:
-                                                        const Icon(Icons.check),
-                                                    onPressed: () {},
-                                                    color: Colors
-                                                        .green, // set the color for check icon button
-                                                  ),
-                                                  IconButton(
-                                                    icon:
-                                                        const Icon(Icons.close),
-                                                    onPressed: () {},
-                                                    color: Colors
-                                                        .red, // set the color for close icon button
-                                                  ),
-                                                ],
+                                              Text(
+                                                'Status: ${userDetails.status}',
+                                                style: const TextStyle(
+                                                    fontSize: 16),
                                               ),
                                             ],
                                           ),
                                         ),
-                                      ),
-                                    ))
-                                .toList(),
-                          ),
-                        );
-                      } else {
-                        return const CircularProgressIndicator();
-                      }
-                    },
-                  ),
-                ],
-              ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            IconButton(
+                                              icon: const Icon(
+                                                  Icons.chat_bubble_outline),
+                                              onPressed: () {},
+                                              color: Colors
+                                                  .black, // set the color for chat icon button
+                                            ),
+                                            IconButton(
+                                              icon: const Icon(Icons.check),
+                                              onPressed: () {},
+                                              color: Colors
+                                                  .green, // set the color for check icon button
+                                            ),
+                                            IconButton(
+                                              icon: const Icon(Icons.close),
+                                              onPressed: () {},
+                                              color: Colors
+                                                  .red, // set the color for close icon button
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ))
+                          .toList(),
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: CircularProgressIndicator()),
+                  );
+                }
+              },
             ),
+            Container(),
+            Container(),
+            Container(),
           ],
         ),
       ),
