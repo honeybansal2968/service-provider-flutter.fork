@@ -1,3 +1,4 @@
+import 'package:authentication/ticket/popup_ticket.dart';
 import 'package:flutter/material.dart';
 
 class BookingPage extends StatefulWidget {
@@ -50,43 +51,11 @@ class _BookingPageState extends State<BookingPage> {
                       children: filteredList
                           .map((userDetails) => GestureDetector(
                                 onTap: () {
-                                  showDialog(
+                                  showModalBottomSheet(
                                     context: context,
-                                    builder: (BuildContext context) =>
-                                        AlertDialog(
-                                      title: Text(userDetails.name),
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                              'Location: ${userDetails.subtitle}'),
-                                          const Text('Distance: 2 km'),
-                                          const SizedBox(height: 10),
-                                          Text(userDetails.description),
-                                          const SizedBox(height: 20),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              ElevatedButton(
-                                                onPressed: () {},
-                                                child: const Text('Message'),
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {},
-                                                child: const Text('Cancel'),
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {},
-                                                child: const Text('Confirm'),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    builder: (BuildContext context) {
+                                      return const BottomPopup();
+                                    },
                                   );
                                 },
                                 child: SizedBox(
