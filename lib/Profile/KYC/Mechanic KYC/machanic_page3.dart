@@ -11,6 +11,14 @@ class MachanicPage3 extends StatefulWidget {
 }
 
 class _MachanicPage3State extends State<MachanicPage3> {
+  final _controllermachanicorgname = TextEditingController();
+  final _controllermachanicshopname = TextEditingController();
+  final _controllermachanicownername = TextEditingController();
+  final _controllermachanicownerphoneno = TextEditingController();
+  late String machanicorgname;
+  late String machanichopname;
+  late String machanicownername;
+  late String machanicownerphoneno;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +48,7 @@ class _MachanicPage3State extends State<MachanicPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllermachanicorgname,
                       style: const TextStyle(),
                       //obscureText: true,
                       decoration: InputDecoration(
@@ -61,6 +70,7 @@ class _MachanicPage3State extends State<MachanicPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllermachanicshopname,
                       style: const TextStyle(),
                       // obscureText: true,
                       decoration: InputDecoration(
@@ -82,6 +92,7 @@ class _MachanicPage3State extends State<MachanicPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllermachanicownername,
                       style: const TextStyle(),
                       //obscureText: true,
                       decoration: InputDecoration(
@@ -103,6 +114,7 @@ class _MachanicPage3State extends State<MachanicPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllermachanicownerphoneno,
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       style: const TextStyle(),
@@ -120,6 +132,13 @@ class _MachanicPage3State extends State<MachanicPage3> {
                     MyButton2(
                       text: 'Next',
                       onTap: () {
+                        setState(() {
+                          machanicorgname = _controllermachanicorgname.text;
+                          machanichopname = _controllermachanicshopname.text;
+                          machanicownername = _controllermachanicownername.text;
+                          machanicownerphoneno =
+                              _controllermachanicownerphoneno.text;
+                        });
                         Navigator.push(
                           context,
                           MaterialPageRoute(

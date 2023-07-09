@@ -9,6 +9,12 @@ class MachanicPage4 extends StatefulWidget {
 }
 
 class _MachanicPage4State extends State<MachanicPage4> {
+  final _controllermachnaicaccholdername = TextEditingController();
+  final _controllermachanicaccno = TextEditingController();
+  final _controllermachanicownerifsccode = TextEditingController();
+  late String machanicaccholdername;
+  late String machanicaccno;
+  late String machanicownerifsccode;
   var accountType = '';
   @override
   Widget build(BuildContext context) {
@@ -66,7 +72,7 @@ class _MachanicPage4State extends State<MachanicPage4> {
                                     fixedSize: const Size.fromHeight(45)),
                                 child: const Text('current'),
                                 onPressed: () {
-                                  // Handle button 2 press
+                                  accountType = 'Current';
                                 },
                               ),
                             ],
@@ -83,6 +89,7 @@ class _MachanicPage4State extends State<MachanicPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllermachnaicaccholdername,
                         style: const TextStyle(),
                         //obscureText: true,
                         decoration: InputDecoration(
@@ -103,6 +110,7 @@ class _MachanicPage4State extends State<MachanicPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllermachanicaccno,
                         style: const TextStyle(),
                         //obscureText: true,
                         decoration: InputDecoration(
@@ -123,6 +131,7 @@ class _MachanicPage4State extends State<MachanicPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllermachanicownerifsccode,
                         style: const TextStyle(),
                         //obscureText: true,
                         decoration: InputDecoration(
@@ -137,7 +146,16 @@ class _MachanicPage4State extends State<MachanicPage4> {
                       const SizedBox(height: 100),
                       MyButton2(
                         text: 'Submit',
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            accountType;
+                            machanicaccholdername =
+                                _controllermachnaicaccholdername.text;
+                            machanicaccno = _controllermachanicaccno.text;
+                            machanicownerifsccode =
+                                _controllermachanicownerifsccode.text;
+                          });
+                        },
                       ),
                     ],
                   ),

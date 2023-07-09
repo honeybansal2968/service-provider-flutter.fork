@@ -11,6 +11,14 @@ class CleanerPage3 extends StatefulWidget {
 }
 
 class _CleanerPage3State extends State<CleanerPage3> {
+  final _controllercleanerorgname = TextEditingController();
+  final _controllercleanershopname = TextEditingController();
+  final _controllercleanerownername = TextEditingController();
+  final _controllercleanerownerphoneno = TextEditingController();
+  late String cleanerorgname;
+  late String cleanershopname;
+  late String cleanerownername;
+  late String cleanerownerphoneno;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +48,7 @@ class _CleanerPage3State extends State<CleanerPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllercleanerorgname,
                       style: const TextStyle(),
                       //obscureText: true,
                       decoration: InputDecoration(
@@ -61,6 +70,7 @@ class _CleanerPage3State extends State<CleanerPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllercleanershopname,
                       style: const TextStyle(),
                       //obscureText: true,
                       decoration: InputDecoration(
@@ -82,6 +92,7 @@ class _CleanerPage3State extends State<CleanerPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllercleanerownername,
                       style: const TextStyle(),
                       //obscureText: true,
                       decoration: InputDecoration(
@@ -103,6 +114,7 @@ class _CleanerPage3State extends State<CleanerPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllercleanerownerphoneno,
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       style: const TextStyle(),
@@ -120,6 +132,13 @@ class _CleanerPage3State extends State<CleanerPage3> {
                     MyButton2(
                       text: 'Next',
                       onTap: () {
+                        setState(() {
+                          cleanerorgname = _controllercleanerorgname.text;
+                          cleanershopname = _controllercleanershopname.text;
+                          cleanerownername = _controllercleanerownername.text;
+                          cleanerownerphoneno =
+                              _controllercleanerownerphoneno.text;
+                        });
                         Navigator.push(
                           context,
                           MaterialPageRoute(

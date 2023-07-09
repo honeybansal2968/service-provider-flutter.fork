@@ -11,7 +11,16 @@ class CleanerPage1 extends StatefulWidget {
 
 class _CleanerPage1State extends State<CleanerPage1> {
   // text editing controllers
-  final otpController = TextEditingController();
+  final _controllercleanername = TextEditingController();
+  final _controllercleanermobileno = TextEditingController();
+  final _controllercleaneremailid = TextEditingController();
+  final _controllercleaneraddress = TextEditingController();
+  final _controllercleanerpincode = TextEditingController();
+  late String cleanername;
+  late String cleanermobileno;
+  late String cleaneremailid;
+  late String cleaneraddress;
+  late String cleanerpincode;
   double dist = 20;
 
   @override
@@ -44,6 +53,7 @@ class _CleanerPage1State extends State<CleanerPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleanername,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -61,6 +71,7 @@ class _CleanerPage1State extends State<CleanerPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleanermobileno,
                           style: const TextStyle(),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
@@ -79,6 +90,7 @@ class _CleanerPage1State extends State<CleanerPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleaneremailid,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -96,6 +108,7 @@ class _CleanerPage1State extends State<CleanerPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleaneraddress,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -113,6 +126,7 @@ class _CleanerPage1State extends State<CleanerPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleanerpincode,
                           style: const TextStyle(),
                           maxLength: 6,
                           keyboardType: TextInputType.number,
@@ -129,6 +143,13 @@ class _CleanerPage1State extends State<CleanerPage1> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
+                            setState(() {
+                              cleanername = _controllercleanername.text;
+                              cleanermobileno = _controllercleanermobileno.text;
+                              cleaneremailid = _controllercleaneremailid.text;
+                              cleaneraddress = _controllercleaneraddress.text;
+                              cleanerpincode = _controllercleanerpincode.text;
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -139,7 +160,7 @@ class _CleanerPage1State extends State<CleanerPage1> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

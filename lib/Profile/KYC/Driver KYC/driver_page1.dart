@@ -11,7 +11,16 @@ class DriverPage1 extends StatefulWidget {
 
 class _DriverPage1State extends State<DriverPage1> {
   // text editing controllers
-  final otpController = TextEditingController();
+  final _controllerdrivername = TextEditingController();
+  final _controllerdrivermobileno = TextEditingController();
+  final _controllerdriveremailid = TextEditingController();
+  final _controllerdriveraddress = TextEditingController();
+  final _controllerdriverpincode = TextEditingController();
+  late String drivername;
+  late String drivermobileno;
+  late String driveremailid;
+  late String driveraddress;
+  late String driverpincode;
   double dist = 20;
 
   @override
@@ -44,6 +53,7 @@ class _DriverPage1State extends State<DriverPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdrivername,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -61,6 +71,7 @@ class _DriverPage1State extends State<DriverPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdrivermobileno,
                           style: const TextStyle(),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
@@ -79,6 +90,7 @@ class _DriverPage1State extends State<DriverPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdriveremailid,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -96,6 +108,7 @@ class _DriverPage1State extends State<DriverPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdriveraddress,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -113,6 +126,7 @@ class _DriverPage1State extends State<DriverPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdriverpincode,
                           style: const TextStyle(),
                           maxLength: 6,
                           keyboardType: TextInputType.number,
@@ -129,6 +143,13 @@ class _DriverPage1State extends State<DriverPage1> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
+                            setState(() {
+                              drivername = _controllerdrivername.text;
+                              drivermobileno = _controllerdrivermobileno.text;
+                              driveremailid = _controllerdriveremailid.text;
+                              driveraddress = _controllerdriveraddress.text;
+                              driverpincode = _controllerdriverpincode.text;
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(

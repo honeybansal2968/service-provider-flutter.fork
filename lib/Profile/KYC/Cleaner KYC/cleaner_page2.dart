@@ -11,7 +11,15 @@ class CleanerPage2 extends StatefulWidget {
 
 class _CleanerPage2State extends State<CleanerPage2> {
   // text editing controllers
-  final otpController = TextEditingController();
+  final _controllercleaneradharno = TextEditingController();
+  final _controllercleanerdl = TextEditingController();
+  final _controllercleanerpancard = TextEditingController();
+  final _controllercleanerworkshopid = TextEditingController();
+  late String cleaneradharno;
+  late String cleanerdl;
+  late String cleanerpancard;
+  late String cleanerworkshopid;
+
   double dist = 20;
 
   @override
@@ -45,6 +53,7 @@ class _CleanerPage2State extends State<CleanerPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleaneradharno,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -62,6 +71,7 @@ class _CleanerPage2State extends State<CleanerPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleanerdl,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -79,6 +89,7 @@ class _CleanerPage2State extends State<CleanerPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleanerpancard,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -96,6 +107,7 @@ class _CleanerPage2State extends State<CleanerPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllercleanerworkshopid,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -110,6 +122,13 @@ class _CleanerPage2State extends State<CleanerPage2> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
+                            setState(() {
+                              cleaneradharno = _controllercleaneradharno.text;
+                              cleanerdl = _controllercleanerdl.text;
+                              cleanerpancard = _controllercleanerpancard.text;
+                              cleanerworkshopid =
+                                  _controllercleanerworkshopid.text;
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(
