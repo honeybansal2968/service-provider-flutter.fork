@@ -11,7 +11,14 @@ class DriverPage2 extends StatefulWidget {
 
 class _DriverPage2State extends State<DriverPage2> {
   // text editing controllers
-  final otpController = TextEditingController();
+  final _controllerdriveradharno = TextEditingController();
+  final _controllerdriverdl = TextEditingController();
+  final _controllerdriverpancard = TextEditingController();
+  final _controllerdriverworkshopid = TextEditingController();
+  late String driveradharno;
+  late String driverdl;
+  late String driverpancard;
+  late String driverworkshopid;
   double dist = 20;
 
   @override
@@ -45,6 +52,7 @@ class _DriverPage2State extends State<DriverPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdriveradharno,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -62,6 +70,7 @@ class _DriverPage2State extends State<DriverPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdriverdl,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -79,6 +88,7 @@ class _DriverPage2State extends State<DriverPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdriverpancard,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -96,6 +106,7 @@ class _DriverPage2State extends State<DriverPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllerdriverworkshopid,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -110,6 +121,13 @@ class _DriverPage2State extends State<DriverPage2> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
+                            setState(() {
+                              driveradharno = _controllerdriveradharno.text;
+                              driverdl = _controllerdriverdl.text;
+                              driverpancard = _controllerdriverpancard.text;
+                              driverworkshopid =
+                                  _controllerdriverworkshopid.text;
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -9,6 +9,12 @@ class CleanerPage4 extends StatefulWidget {
 }
 
 class _CleanerPage4State extends State<CleanerPage4> {
+  final _controllercleaneraccholdername = TextEditingController();
+  final _controllercleaneraccno = TextEditingController();
+  final _controllercleanerownerifsccode = TextEditingController();
+  late String cleaneraccholdername;
+  late String cleaneraccno;
+  late String cleanerownerifsccode;
   var accountType = '';
   @override
   Widget build(BuildContext context) {
@@ -66,7 +72,7 @@ class _CleanerPage4State extends State<CleanerPage4> {
                                     fixedSize: const Size.fromHeight(45)),
                                 child: const Text('current'),
                                 onPressed: () {
-                                  // Handle button 2 press
+                                  accountType = 'Current';
                                 },
                               ),
                             ],
@@ -83,6 +89,7 @@ class _CleanerPage4State extends State<CleanerPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllercleaneraccholdername,
                         style: const TextStyle(),
                         //obscureText: true,
                         decoration: InputDecoration(
@@ -103,6 +110,7 @@ class _CleanerPage4State extends State<CleanerPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllercleaneraccno,
                         style: const TextStyle(),
                         // obscureText: true,
                         decoration: InputDecoration(
@@ -123,6 +131,7 @@ class _CleanerPage4State extends State<CleanerPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllercleanerownerifsccode,
                         style: const TextStyle(),
                         // obscureText: true,
                         decoration: InputDecoration(
@@ -137,7 +146,16 @@ class _CleanerPage4State extends State<CleanerPage4> {
                       const SizedBox(height: 100),
                       MyButton2(
                         text: 'Submit',
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            accountType;
+                            cleaneraccholdername =
+                                _controllercleaneraccholdername.text;
+                            cleaneraccno = _controllercleaneraccno.text;
+                            cleanerownerifsccode =
+                                _controllercleanerownerifsccode.text;
+                          });
+                        },
                       ),
                     ],
                   ),

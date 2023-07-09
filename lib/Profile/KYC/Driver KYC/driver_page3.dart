@@ -11,6 +11,14 @@ class DriverPage3 extends StatefulWidget {
 }
 
 class _DriverPage3State extends State<DriverPage3> {
+  final _controllerdriverorgname = TextEditingController();
+  final _controllerdrivershopname = TextEditingController();
+  final _controllerdriverownername = TextEditingController();
+  final _controllerdriverownerphoneno = TextEditingController();
+  late String driverorgname;
+  late String drivershopname;
+  late String driverownername;
+  late String driverownerphoneno;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +48,7 @@ class _DriverPage3State extends State<DriverPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllerdriverorgname,
                       style: const TextStyle(),
                       //obscureText: true,
                       decoration: InputDecoration(
@@ -61,6 +70,7 @@ class _DriverPage3State extends State<DriverPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllerdrivershopname,
                       style: const TextStyle(),
                       // obscureText: true,
                       decoration: InputDecoration(
@@ -82,6 +92,7 @@ class _DriverPage3State extends State<DriverPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllerdriverownername,
                       style: const TextStyle(),
                       //obscureText: true,
                       decoration: InputDecoration(
@@ -103,6 +114,7 @@ class _DriverPage3State extends State<DriverPage3> {
                       ),
                     ),
                     TextField(
+                      controller: _controllerdriverownerphoneno,
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       style: const TextStyle(),
@@ -120,6 +132,13 @@ class _DriverPage3State extends State<DriverPage3> {
                     MyButton2(
                       text: 'Next',
                       onTap: () {
+                        setState(() {
+                          driverorgname = _controllerdriverorgname.text;
+                          drivershopname = _controllerdrivershopname.text;
+                          driverownername = _controllerdriverownername.text;
+                          driverownerphoneno =
+                              _controllerdriverownerphoneno.text;
+                        });
                         Navigator.push(
                           context,
                           MaterialPageRoute(

@@ -2,6 +2,7 @@ import 'package:authentication/authentication/forgot_password.dart';
 import 'package:authentication/authentication/homepage.dart';
 import 'package:authentication/components/square_tile.dart';
 import 'package:authentication/global_var.dart';
+import 'package:authentication/home/all_parts_integrated.dart';
 import 'package:authentication/serivces/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:authentication/models/userModel.dart';
@@ -204,7 +205,7 @@ class _SigninPageState extends State<SigninPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              HomePage2(user: data)),
+                                              const IntegratedHome()),
                                     );
                                   }
                                 } catch (err) {

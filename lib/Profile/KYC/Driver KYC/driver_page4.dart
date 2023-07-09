@@ -9,6 +9,12 @@ class DriverPage4 extends StatefulWidget {
 }
 
 class _DriverPage4State extends State<DriverPage4> {
+  final _controllerdriveraccholdername = TextEditingController();
+  final _controllerdriveraccno = TextEditingController();
+  final _controllerdriverownerifsccode = TextEditingController();
+  late String driveraccholdername;
+  late String driveraccno;
+  late String driverownerifsccode;
   var accountType = '';
   @override
   Widget build(BuildContext context) {
@@ -66,7 +72,7 @@ class _DriverPage4State extends State<DriverPage4> {
                                     fixedSize: const Size.fromHeight(45)),
                                 child: const Text('current'),
                                 onPressed: () {
-                                  // Handle button 2 press
+                                  accountType = 'Current';
                                 },
                               ),
                             ],
@@ -83,6 +89,7 @@ class _DriverPage4State extends State<DriverPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllerdriveraccholdername,
                         style: const TextStyle(),
                         //obscureText: true,
                         decoration: InputDecoration(
@@ -103,6 +110,7 @@ class _DriverPage4State extends State<DriverPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllerdriveraccno,
                         style: const TextStyle(),
                         //obscureText: true,
                         decoration: InputDecoration(
@@ -123,6 +131,7 @@ class _DriverPage4State extends State<DriverPage4> {
                         ),
                       ),
                       TextField(
+                        controller: _controllerdriverownerifsccode,
                         style: const TextStyle(),
                         //obscureText: true,
                         decoration: InputDecoration(
@@ -137,7 +146,16 @@ class _DriverPage4State extends State<DriverPage4> {
                       const SizedBox(height: 100),
                       MyButton2(
                         text: 'Submit',
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            accountType;
+                            driveraccholdername =
+                                _controllerdriveraccholdername.text;
+                            driveraccno = _controllerdriveraccno.text;
+                            driverownerifsccode =
+                                _controllerdriverownerifsccode.text;
+                          });
+                        },
                       ),
                     ],
                   ),

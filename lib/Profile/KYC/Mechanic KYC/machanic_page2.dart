@@ -10,8 +10,14 @@ class MachanicPage2 extends StatefulWidget {
 }
 
 class _MachanicPage2State extends State<MachanicPage2> {
-  // text editing controllers
-  final otpController = TextEditingController();
+  final _controllermachanicadharno = TextEditingController();
+  final _controllermachanicdl = TextEditingController();
+  final _controllermachanicpancard = TextEditingController();
+  final _controllermachanicworkshopid = TextEditingController();
+  late String machanicadharno;
+  late String machanicdl;
+  late String machanicpancard;
+  late String machanicworkshopid;
   double dist = 20;
 
   @override
@@ -45,6 +51,7 @@ class _MachanicPage2State extends State<MachanicPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicadharno,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -62,6 +69,7 @@ class _MachanicPage2State extends State<MachanicPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicdl,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -79,6 +87,7 @@ class _MachanicPage2State extends State<MachanicPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicpancard,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -96,6 +105,7 @@ class _MachanicPage2State extends State<MachanicPage2> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicworkshopid,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -110,6 +120,13 @@ class _MachanicPage2State extends State<MachanicPage2> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
+                            setState(() {
+                              machanicadharno = _controllermachanicadharno.text;
+                              machanicdl = _controllermachanicdl.text;
+                              machanicpancard = _controllermachanicpancard.text;
+                              machanicworkshopid =
+                                  _controllermachanicworkshopid.text;
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(

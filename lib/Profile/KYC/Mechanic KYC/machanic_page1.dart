@@ -10,8 +10,16 @@ class MachanicPage1 extends StatefulWidget {
 }
 
 class _MachanicPage1State extends State<MachanicPage1> {
-  // text editing controllers
-  final otpController = TextEditingController();
+  final _controllermachanicname = TextEditingController();
+  final _controllermachanicmobileno = TextEditingController();
+  final _controllermachanicemailid = TextEditingController();
+  final _controllermachanicaddress = TextEditingController();
+  final _controllermachanicpincode = TextEditingController();
+  late String machanicname;
+  late String machanicmobileno;
+  late String machanicemailid;
+  late String machanicaddress;
+  late String machanicpincode;
   double dist = 20;
 
   @override
@@ -44,6 +52,7 @@ class _MachanicPage1State extends State<MachanicPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicname,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -61,6 +70,7 @@ class _MachanicPage1State extends State<MachanicPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicmobileno,
                           style: const TextStyle(),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
@@ -79,6 +89,7 @@ class _MachanicPage1State extends State<MachanicPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicemailid,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -96,6 +107,7 @@ class _MachanicPage1State extends State<MachanicPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicaddress,
                           style: const TextStyle(),
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
@@ -113,6 +125,7 @@ class _MachanicPage1State extends State<MachanicPage1> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextField(
+                          controller: _controllermachanicpincode,
                           style: const TextStyle(),
                           maxLength: 6,
                           keyboardType: TextInputType.number,
@@ -129,6 +142,14 @@ class _MachanicPage1State extends State<MachanicPage1> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
+                            setState(() {
+                              machanicname = _controllermachanicname.text;
+                              machanicmobileno =
+                                  _controllermachanicmobileno.text;
+                              machanicemailid = _controllermachanicemailid.text;
+                              machanicaddress = _controllermachanicaddress.text;
+                              machanicpincode = _controllermachanicpincode.text;
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(
