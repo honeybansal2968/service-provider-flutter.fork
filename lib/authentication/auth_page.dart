@@ -1,20 +1,24 @@
-// import 'package:authentication/authentication/provider_type_select.dart';
-// import 'package:flutter/material.dart';
-// import 'homepage.dart';
 
-// class AuthPage extends StatelessWidget {
+// import 'package:authentication/authentication/homepage.dart';
+// import 'package:authentication/authentication/login_or_register_page.dart';
+// import 'package:flutter/material.dart';
+
+// class AuthPage extends StatefulWidget {
 //   const AuthPage({super.key});
 
 //   @override
+//   State<AuthPage> createState() => _AuthPageState();
+// }
+
+// class _AuthPageState extends State<AuthPage> {
+//   bool userVerified = false;
+
+//   @override
 //   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: StreamBuilder(
-//             stream: FirebaseAuth.instance.authStateChanges(),
-//             builder: (context, snapshot) {
-//               if (snapshot.hasData) {
-//                 return HomePage(); //user logged in
-//               }
-//               return ProviderTogglePage(); //user not logged in,this page will take his identity for further uses and direct him to login/signup
-//             }));
+//     if (userVerified) {
+//       return HomePage(user: user);
+//     } else {
+//       return const LoginOrRegisterPage();
+//     }
 //   }
 // }

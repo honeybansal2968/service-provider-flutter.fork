@@ -1,6 +1,7 @@
 import 'package:authentication/authentication/homepage.dart';
 import 'package:authentication/components/square_tile.dart';
 import 'package:authentication/global_var.dart';
+import 'package:authentication/home/all_parts_integrated.dart';
 import 'package:authentication/models/userModel.dart';
 import 'package:authentication/serivces/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -162,32 +163,7 @@ class _SignupPageState extends State<SignupPage> {
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
-                            controller: confirmPasswordController,
-                            style: const TextStyle(color: Colors.white),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                hintText: "Confirm Password",
-                                hintStyle: const TextStyle(color: Colors.white),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
+
                           const SizedBox(
                             height: 40,
                           ),
@@ -267,7 +243,7 @@ class _SignupPageState extends State<SignupPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            HomePage(user: data)),
+                                            const IntegratedHome()),
                                   );
                                 }
                               } catch (err) {
@@ -293,14 +269,14 @@ class _SignupPageState extends State<SignupPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                'Already a member?',
+                                '        Already a member?',
                                 style: TextStyle(color: Colors.white),
                               ),
                               const SizedBox(width: 4),
                               GestureDetector(
                                 onTap: widget.onTap,
                                 child: const Text(
-                                  'Login here        ',
+                                  'Login here',
                                   style: TextStyle(
                                     color: Color(0xFF68CAF0),
                                     fontWeight: FontWeight.bold,

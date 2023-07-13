@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.authentication">
+
+    <!-- Add the permission to access the device's gallery -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
    <application
         android:label="authentication"
         android:name="${applicationName}"
