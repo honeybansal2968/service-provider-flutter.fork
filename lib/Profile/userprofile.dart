@@ -208,7 +208,7 @@ class _UserProfileState extends State<UserProfile> {
         title: Text(title),
         subtitle: Text(subtitle),
         leading: Icon(iconData),
-        trailing: Icon(Icons.arrow_forward, color: Colors.grey.shade400),
+        // trailing: Icon(Icons.arrow_forward, color: Colors.grey.shade400),
         tileColor: Colors.white,
       ),
     );
