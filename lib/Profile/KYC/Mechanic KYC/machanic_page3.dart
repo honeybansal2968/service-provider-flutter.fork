@@ -1,7 +1,13 @@
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page4.dart';
-import 'package:authentication/components/my_button_2.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import '../../../components/my_button_2.dart';
+import '../../../models/mechanic_data_model.dart';
+import '../../../provider/mechanic_data_provider.dart';
+import 'machanic_page4.dart';
 
 class MachanicPage3 extends StatefulWidget {
   const MachanicPage3({Key? key}) : super(key: key);
@@ -15,10 +21,7 @@ class _MachanicPage3State extends State<MachanicPage3> {
   final _controllermachanicshopname = TextEditingController();
   final _controllermachanicownername = TextEditingController();
   final _controllermachanicownerphoneno = TextEditingController();
-  late String machanicorgname;
-  late String machanichopname;
-  late String machanicownername;
-  late String machanicownerphoneno;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,37 +111,44 @@ class _MachanicPage3State extends State<MachanicPage3> {
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Owner Number:',
-                        textAlign: TextAlign.start,
+                        'Owner Mobile No:',
+                        textAlign: TextAlign.left,
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
                     TextField(
                       controller: _controllermachanicownerphoneno,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       style: const TextStyle(),
-                      // obscureText: true,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       decoration: InputDecoration(
                         fillColor: const Color(0XFFe8f7f0),
                         filled: true,
-                        hintText: "Phone No",
+                        hintText: "Owner Mobile No",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 120),
+                    const SizedBox(height: 20), //5
                     MyButton2(
                       text: 'Next',
                       onTap: () {
-                        setState(() {
-                          machanicorgname = _controllermachanicorgname.text;
-                          machanichopname = _controllermachanicshopname.text;
-                          machanicownername = _controllermachanicownername.text;
-                          machanicownerphoneno =
-                              _controllermachanicownerphoneno.text;
-                        });
+                        final dataProvider =
+                        Provider.of<MechanicDataProvider>(context,
+                            listen: false);
+
+                        final page3Data = MechanicPage3Data(
+                          organizationName: _controllermachanicorgname.text,
+                          ownerName: _controllermachanicshopname.text,
+                          workshopName: _controllermachanicownername.text,
+                          ownerPhoneNumber: _controllermachanicownerphoneno.text,
+                        );
+
+                        dataProvider.updatePage3Data(page3Data);
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(

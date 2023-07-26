@@ -1,10 +1,19 @@
 import 'package:authentication/authentication/login_or_register_page.dart';
+import 'package:authentication/provider/mechanic_data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'home/all_parts_integrated.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(const MyApp());
+  // Provider.debugCheckInvalidValueType = null;
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => MechanicDataProvider()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

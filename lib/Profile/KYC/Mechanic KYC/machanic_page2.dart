@@ -1,9 +1,15 @@
 import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page3.dart';
-import 'package:authentication/components/my_button_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import '../../../components/my_button_2.dart';
+import '../../../models/mechanic_data_model.dart';
+import '../../../provider/mechanic_data_provider.dart';
+
 
 class MachanicPage2 extends StatefulWidget {
-  const MachanicPage2({super.key});
+  const MachanicPage2({Key? key}) : super(key: key);
 
   @override
   State<MachanicPage2> createState() => _MachanicPage2State();
@@ -14,10 +20,6 @@ class _MachanicPage2State extends State<MachanicPage2> {
   final _controllermachanicdl = TextEditingController();
   final _controllermachanicpancard = TextEditingController();
   final _controllermachanicworkshopid = TextEditingController();
-  late String machanicadharno;
-  late String machanicdl;
-  late String machanicpancard;
-  late String machanicworkshopid;
   double dist = 20;
 
   @override
@@ -64,7 +66,7 @@ class _MachanicPage2State extends State<MachanicPage2> {
                         ),
                         SizedBox(height: dist),
                         const Text(
-                          'Driving Liscence:                                                                      ',
+                          'Driving Licence:                                                                      ',
                           textAlign: TextAlign.left,
                           style: TextStyle(color: Colors.grey),
                         ),
@@ -74,7 +76,7 @@ class _MachanicPage2State extends State<MachanicPage2> {
                           decoration: InputDecoration(
                               fillColor: const Color(0XFFe8f7f0),
                               filled: true,
-                              hintText: "Driving Liscence No.",
+                              hintText: "Driving Licence No.",
                               hintStyle: const TextStyle(color: Colors.black26),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -100,7 +102,7 @@ class _MachanicPage2State extends State<MachanicPage2> {
                         ),
                         SizedBox(height: dist),
                         const Text(
-                          'Workshop id:                                                                      ',
+                          'Workshop ID:                                                                      ',
                           textAlign: TextAlign.left,
                           style: TextStyle(color: Colors.grey),
                         ),
@@ -120,13 +122,19 @@ class _MachanicPage2State extends State<MachanicPage2> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
-                            setState(() {
-                              machanicadharno = _controllermachanicadharno.text;
-                              machanicdl = _controllermachanicdl.text;
-                              machanicpancard = _controllermachanicpancard.text;
-                              machanicworkshopid =
-                                  _controllermachanicworkshopid.text;
-                            });
+                            final dataProvider =
+                            Provider.of<MechanicDataProvider>(context,
+                                listen: false);
+
+                            final page2Data = MechanicPage2Data(
+                              mechanicAdharNo: _controllermachanicadharno.text,
+                              mechanicDL: _controllermachanicdl.text,
+                              mechanicPAN: _controllermachanicpancard.text,
+                              mechanicWorkshopId: _controllermachanicworkshopid.text,
+                            );
+
+                            dataProvider.updatePage2Data(page2Data);
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(

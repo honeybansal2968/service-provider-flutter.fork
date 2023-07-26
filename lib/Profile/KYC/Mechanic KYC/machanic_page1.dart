@@ -1,9 +1,14 @@
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page2.dart';
-import 'package:authentication/components/my_button_2.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../components/my_button_2.dart';
+import '../../../models/mechanic_data_model.dart';
+import '../../../provider/mechanic_data_provider.dart';
+import 'machanic_page2.dart';
+
 
 class MachanicPage1 extends StatefulWidget {
-  const MachanicPage1({super.key});
+  const MachanicPage1({Key? key}) : super(key: key);
 
   @override
   State<MachanicPage1> createState() => _MachanicPage1State();
@@ -15,11 +20,6 @@ class _MachanicPage1State extends State<MachanicPage1> {
   final _controllermachanicemailid = TextEditingController();
   final _controllermachanicaddress = TextEditingController();
   final _controllermachanicpincode = TextEditingController();
-  late String machanicname;
-  late String machanicmobileno;
-  late String machanicemailid;
-  late String machanicaddress;
-  late String machanicpincode;
   double dist = 20;
 
   @override
@@ -142,14 +142,24 @@ class _MachanicPage1State extends State<MachanicPage1> {
                         MyButton2(
                           text: 'Next',
                           onTap: () {
-                            setState(() {
-                              machanicname = _controllermachanicname.text;
-                              machanicmobileno =
-                                  _controllermachanicmobileno.text;
-                              machanicemailid = _controllermachanicemailid.text;
-                              machanicaddress = _controllermachanicaddress.text;
-                              machanicpincode = _controllermachanicpincode.text;
-                            });
+                            final dataProvider =
+                            Provider.of<MechanicDataProvider>(context,
+                                listen: false);
+
+                            final page1Data = MechanicPage1Data(
+                              mechanicName: _controllermachanicname.text,
+                              mechanicMobileNo:
+                              _controllermachanicmobileno.text,
+                              mechanicEmailId:
+                              _controllermachanicemailid.text,
+                              mechanicAddress:
+                              _controllermachanicaddress.text,
+                              mechanicPinCode:
+                              _controllermachanicpincode.text,
+                            );
+
+                            dataProvider.updatePage1Data(page1Data);
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(

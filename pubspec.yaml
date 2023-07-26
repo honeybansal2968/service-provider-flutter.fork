@@ -40,6 +40,8 @@ dependencies:
   pinput: ^2.2.31
   url_launcher: ^6.1.11
 
+  provider: ^6.0.5
+
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
