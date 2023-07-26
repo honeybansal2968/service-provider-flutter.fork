@@ -1,19 +1,9 @@
-import 'package:authentication/components/my_text_form_field.dart';
+import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page2.dart';
+import 'package:authentication/components/my_button_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-
-import '../../../components/my_button_2.dart';
-import '../../../helper_functions/validator.dart';
-import '../../../models/mechanic_data_model.dart';
-import '../../../provider/mechanic_data_provider.dart';
-
-typedef NextPageCallback = void Function();
 
 class MachanicPage1 extends StatefulWidget {
-  final NextPageCallback onNextPage;
-
-  const MachanicPage1({Key? key, required this.onNextPage}) : super(key: key);
+  const MachanicPage1({super.key});
 
   @override
   State<MachanicPage1> createState() => _MachanicPage1State();
