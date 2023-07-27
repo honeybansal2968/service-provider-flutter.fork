@@ -39,7 +39,7 @@ class _MechanicKYCPathState extends State<MechanicKYCPath>
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text(
-          'Upload KYC 1',
+          'Upload KYC-Mechanic  ',
           style: TextStyle(fontSize: 30),
         ),
         bottom: PreferredSize(
@@ -94,10 +94,16 @@ class _MechanicKYCPathState extends State<MechanicKYCPath>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
-          Center(child: MachanicPage1()),
-          Center(child: MachanicPage2()),
-          Center(child: MachanicPage3()),
+        children: [
+          Center(child: MachanicPage1(onNextPage: () {
+            _tabController.animateTo(_tabController.index + 1);
+          }),),
+          Center(child: MachanicPage2(onNextPage: () {
+            _tabController.animateTo(_tabController.index + 1);
+          }),),
+          Center(child: MachanicPage3(onNextPage: () {
+            _tabController.animateTo(_tabController.index + 1);
+          }),),
           Center(child: MachanicPage4()),
         ],
       ),
