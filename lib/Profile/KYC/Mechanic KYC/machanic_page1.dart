@@ -1,20 +1,29 @@
-import 'package:authentication/Profile/KYC/Mechanic%20KYC/machanic_page2.dart';
-import 'package:authentication/components/my_button_2.dart';
+import 'package:authentication/components/my_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import '../../../components/my_button_2.dart';
+import '../../../helper_functions/validator.dart';
+import '../../../models/mechanic_data_model.dart';
+import '../../../provider/mechanic_data_provider.dart';
+import 'machanic_page2.dart';
+
+typedef NextPageCallback = void Function();
+
+
 
 class MachanicPage1 extends StatefulWidget {
-  const MachanicPage1({super.key});
+  final NextPageCallback onNextPage;
+
+  const MachanicPage1({Key? key, required this.onNextPage}) : super(key: key);
 
   @override
   State<MachanicPage1> createState() => _MachanicPage1State();
 }
 
-class _MachanicPage1State extends State<MachanicPage1>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
+class _MachanicPage1State extends State<MachanicPage1> {
 
-// Fetch the DocumentDetails data from the provider
 
   final _controllermachanicname = TextEditingController();
   final _controllermachanicmobileno = TextEditingController();
@@ -23,25 +32,9 @@ class _MachanicPage1State extends State<MachanicPage1>
   final _controllermachanicpincode = TextEditingController();
   double dist = 10;
 
-  @override
-  void initState() {
-    super.initState();
-    final dataProvider =
-        Provider.of<MechanicDataProvider>(context, listen: false);
-    final page1Data = dataProvider.page1Data;
-
-    // Check if initialData is provided
-    // Autofill the TextEditingControllers with initialData
-    _controllermachanicname.text = page1Data!.fullName ?? '';
-    _controllermachanicmobileno.text = page1Data.phoneNo ?? '';
-    _controllermachanicemailid.text = page1Data.email ?? '';
-    _controllermachanicaddress.text = page1Data.address ?? '';
-    _controllermachanicpincode.text = page1Data.pincode ?? '';
-  }
 
   // keys
   final _key = GlobalKey<FormState>();
-
   // focusNodes
   final phoneFocus = FocusNode();
   final emailFocus = FocusNode();
@@ -55,7 +48,7 @@ class _MachanicPage1State extends State<MachanicPage1>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 15),
         child: SingleChildScrollView(
           child: Form(
             key: _key,
@@ -63,11 +56,14 @@ class _MachanicPage1State extends State<MachanicPage1>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: dist),
+
                 const Text(
                   'Enter Your Details',
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
+
                 SizedBox(height: dist),
+
                 MyTextFormField(
                   controller: _controllermachanicname,
                   onFieldSubmitted: (_) => nextFocus(phoneFocus),
@@ -105,7 +101,7 @@ class _MachanicPage1State extends State<MachanicPage1>
                 MyTextFormField(
                   controller: _controllermachanicaddress,
                   focusNode: addressFocus,
-                  onFieldSubmitted: (_) => nextFocus(pincodeFocus),
+                  onFieldSubmitted:(_) => nextFocus(pincodeFocus) ,
                   textInputAction: TextInputAction.done,
                   label: "Address",
                   hintText: "Enter address",
@@ -124,28 +120,49 @@ class _MachanicPage1State extends State<MachanicPage1>
                   ],
                 ),
                 SizedBox(height: dist),
+
                 MyButton2(
-                  text: 'Save & Next',
+                  text: 'Next',
                   onTap: () {
-                    if (_key.currentState != null &&
-                        _key.currentState!.validate()) {
-                      final dataProvider = Provider.of<MechanicDataProvider>(
-                          context,
-                          listen: false);
 
-                      final page1Data = GeneralDetails(
-                        fullName: _controllermachanicname.text,
-                        phoneNo: _controllermachanicmobileno.text,
-                        email: _controllermachanicemailid.text,
-                        address: _controllermachanicaddress.text,
-                        pincode: _controllermachanicpincode.text,
-                      );
+                    if(_key.currentState !=null && _key.currentState!.validate())
 
-                      dataProvider.updatePage1Data(page1Data);
+                      {
+                        final dataProvider =
+                        Provider.of<MechanicDataProvider>(context,
+                            listen: false);
 
-                      widget.onNextPage(); // Call the callback to switch tabs
-                    }
+                        final page1Data = MechanicPage1Data(
+                          mechanicName: _controllermachanicname.text,
+                          mechanicMobileNo:
+                          _controllermachanicmobileno.text,
+                          mechanicEmailId:
+                          _controllermachanicemailid.text,
+                          mechanicAddress:
+                          _controllermachanicaddress.text,
+                          mechanicPinCode:
+                          _controllermachanicpincode.text,
+                        );
 
+                        dataProvider.updatePage1Data(page1Data);
+
+
+
+                        widget.onNextPage(); // Call the callback to switch tabs
+
+                      }
+
+
+
+                    // _tabController.animateTo(_tabController.index + 1);
+
+
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => MachanicPage2(),
+                    //   ),
+                    // );
                   },
                 )
               ],

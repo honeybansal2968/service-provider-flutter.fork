@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../apis/michanic_api.dart';
 import '../../../components/my_button_2.dart';
+import '../../../components/my_text_form_field.dart';
 import '../../../models/mechanic_data_model.dart';
 import '../../../provider/mechanic_data_provider.dart';
 
@@ -21,9 +23,24 @@ class _MachanicPage4State extends State<MachanicPage4> {
 
   // A variable to hold the selected account type
   var accountType = '';
+  double dist = 10;
+
+  // keys
+  final _key = GlobalKey<FormState>();
+  // focusNodes
+  final nameFocus = FocusNode();
+  final numberFocus = FocusNode();
+  final ifscFocus = FocusNode();
+
+  // nextFocus
+  void nextFocus(FocusNode node) => node.requestFocus();
 
 
   void _submitForm() async {
+
+
+
+
     final dataProvider = Provider.of<MechanicDataProvider>(context, listen: false);
 
     final page1Data = dataProvider.page1Data;
@@ -98,147 +115,130 @@ class _MachanicPage4State extends State<MachanicPage4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 15),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
+
+                SizedBox(height: dist),
+
+                const Text(
+                  'Bank Account Details',
+                  style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 35, right: 35),
-                  child: Column(
-                    children: [
-                      Column(
-                        children: [
-                          const Text(
-                            'Enter Account Details',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                SizedBox(height: dist),
+
+                Row(
+                  children: [
+                    const Text(
+                      'Account Type:',
+                      style: TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
-                          const SizedBox(
-                            height: 20,
+                          backgroundColor: Colors.green[300],
+                          fixedSize: const Size.fromHeight(45)),
+                      child: const Text('Savings'),
+                      onPressed: () {
+                        setState(() {
+                          accountType = 'Savings';
+                        });
+                      },
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
-                          Row(
-                            children: [
-                              const Text(
-                                'Account Type:',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(width: 10),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    backgroundColor: Colors.green[300],
-                                    fixedSize: const Size.fromHeight(45)),
-                                child: const Text('Savings'),
-                                onPressed: () {
-                                  setState(() {
-                                    accountType = 'Savings';
-                                  });
-                                },
-                              ),
-                              const SizedBox(width: 10),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    backgroundColor: Colors.green[300],
-                                    fixedSize: const Size.fromHeight(45)),
-                                child: const Text('current'),
-                                onPressed: () {
-                                  setState(() {
-                                    accountType = 'Current';
-                                  });
-                                },
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 20), //1
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Account Holder Name:',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                      TextField(
-                        controller: _controllermachnaicaccholdername,
-                        style: const TextStyle(),
-                        decoration: InputDecoration(
-                          fillColor: const Color(0XFFe8f7f0),
-                          filled: true,
-                          hintText: "Name",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20), //2
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Account Number:',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                      TextField(
-                        controller: _controllermachanicaccno,
-                        style: const TextStyle(),
-                        decoration: InputDecoration(
-                          fillColor: const Color(0XFFe8f7f0),
-                          filled: true,
-                          hintText: "Account No.",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20), //3
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'IFSC Code:',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                      TextField(
-                        controller: _controllermachanicownerifsccode,
-                        style: const TextStyle(),
-                        decoration: InputDecoration(
-                          fillColor: const Color(0XFFe8f7f0),
-                          filled: true,
-                          hintText: "IFSC Code",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 100),
-                      MyButton2(
-                        text: 'Submit',
-                        onTap: _submitForm
+                          backgroundColor: Colors.green[300],
+                          fixedSize: const Size.fromHeight(45)),
+                      child: const Text('current'),
+                      onPressed: () {
+                        setState(() {
+                          accountType = 'Current';
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(height: dist),
+
+                MyTextFormField(
+                  controller: _controllermachnaicaccholdername,
+                  onFieldSubmitted: (_) => nextFocus(numberFocus),
+                  label: "Account Holder Name:",
+                  hintText: "Enter Account Holder Name:",
+                  validator: (name) {
+                    if (name != null && name.trim().isNotEmpty) return null;
+                    return "Please enter name";
+                  },
+                ),
+
+                SizedBox(height: dist),
+
+                MyTextFormField(
+                  controller: _controllermachanicaccno,
+                  focusNode: numberFocus,
+                  onFieldSubmitted: (_) => nextFocus(ifscFocus),
+                  label: "Account Number:",
+                  hintText: "Enter Account Number:",
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                  ],
+                  maxLength: 20,
+                  validator: (name) {
+                    if (name != null && name.trim().isNotEmpty) return null;
+                    return "Please enter name";
+                  },
+
+                ),
+
+                SizedBox(height: dist),
+                MyTextFormField(
+                  controller: _controllermachanicownerifsccode,
+                  focusNode: ifscFocus,
+                  label: "IFSC Code:",
+                  hintText: "Enter IFSC Code:",
+                  validator: (name) {
+                    if (name != null && name.trim().isNotEmpty) return null;
+                    return "Please code";
+                  },
+                ),
+
+                SizedBox(height: dist),
+
+
+                MyButton2(
+                  text: 'Submit',
+                  onTap: (){
+                    print("clicked");
+                    if(_key.currentState !=null && _key.currentState!.validate()){
+
+                      print("Validated");
+
+                      _submitForm();
+
+
+                    }
+                  }
 
 
 
-                      ),
-                    ],
-                  ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
