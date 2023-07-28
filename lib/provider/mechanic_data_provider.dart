@@ -2,70 +2,85 @@ import 'package:flutter/material.dart';
 import '../apis/michanic_api.dart';
 import '../models/mechanic_data_model.dart';
 
-
 class MechanicDataProvider with ChangeNotifier {
-  MechanicPage1Data _page1Data = MechanicPage1Data(
-    mechanicName: '',
-    mechanicMobileNo: '',
-    mechanicEmailId: '',
-    mechanicAddress: '',
-    mechanicPinCode: '',
+  String _apiErrorMessage = '';
+
+  String get apiErrorMessage => _apiErrorMessage;
+
+  // Method to update the API error message
+  void updateApiErrorMessage(String errorMessage) {
+    _apiErrorMessage = errorMessage;
+    notifyListeners();
+  }
+
+  // Method to clear the API error message
+  void clearApiErrorMessage() {
+    _apiErrorMessage = '';
+    notifyListeners();
+  }
+
+  GeneralDetails _page1Data = GeneralDetails(
+    fullName: '',
+    email: '',
+    phoneNo: '',
+    address: '',
+    pincode: '',
   );
 
-  MechanicPage2Data _page2Data = MechanicPage2Data(
-    mechanicAdharNo: '',
-    mechanicDL: '',
-    mechanicPAN: '',
-    mechanicWorkshopId: '',
+  DocumentDetails _page2Data = DocumentDetails(
+    aadhaarNo: '',
+    drivingLicenceNo: '',
+    panCardNo: '',
   );
 
-  MechanicPage3Data _page3Data = MechanicPage3Data(
-    organizationName: '',
-    workshopName: '',
+  Organization _page3Data = Organization(
+    orgName: '',
     ownerName: '',
-    ownerPhoneNumber: '',
+    ownerPhoneNo: '',
   );
 
-  MechanicPage4Data _page4Data = MechanicPage4Data(
-    accountType: '',
+  WorkshopDetails _workshopDetails = WorkshopDetails(organization: Organization(
+    orgName: '',
+    ownerName: '',
+    ownerPhoneNo: '',
+  ));
+
+  BankDetails _page4Data = BankDetails(
+    bankAccountType: '',
     accountHolderName: '',
-    accountNumber: '',
+    bankAccountNo: '',
     ifscCode: '',
   );
 
-  MechanicPage1Data get page1Data => _page1Data;
-  MechanicPage2Data get page2Data => _page2Data;
-  MechanicPage3Data get page3Data => _page3Data;
-  MechanicPage4Data get page4Data => _page4Data;
+  GeneralDetails get page1Data => _page1Data;
+  DocumentDetails get page2Data => _page2Data;
+  Organization get page3Data => _page3Data;
+  BankDetails get page4Data => _page4Data;
+  WorkshopDetails get orgdata => _workshopDetails;
 
-  void updatePage1Data(MechanicPage1Data newData) {
+  MechanicDataProvider() {
+    // Initialize the WorkshopDetails here with the correct Organization data
+    _workshopDetails = WorkshopDetails(organization: _page3Data);
+  }
+
+  void updatePage1Data(GeneralDetails newData) {
     _page1Data = newData;
     notifyListeners();
   }
 
-  void updatePage2Data(MechanicPage2Data newData) {
+  void updatePage2Data(DocumentDetails newData) {
     _page2Data = newData;
     notifyListeners();
   }
 
-  void updatePage3Data(MechanicPage3Data newData) {
+  void updatePage3Data(Organization newData) {
     _page3Data = newData;
+    _workshopDetails = WorkshopDetails(organization: _page3Data);
     notifyListeners();
   }
 
-  void updatePage4Data(MechanicPage4Data newData) {
+  void updatePage4Data(BankDetails newData) {
     _page4Data = newData;
     notifyListeners();
   }
-
-  // Future<bool> sendDataToServer() async {
-  //   final mechanicData = MechanicDataModel(
-  //     page1Data: _page1Data,
-  //     page2Data: _page2Data,
-  //     page3Data: _page3Data,
-  //     page4Data: _page4Data,
-  //   );
-  //   final result = await MechanicAPI.submitMechanicData(mechanicData);
-  //   return result;
-  // }
 }
