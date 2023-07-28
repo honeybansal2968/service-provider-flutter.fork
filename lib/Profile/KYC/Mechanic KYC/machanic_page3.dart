@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -10,28 +8,44 @@ import '../../../helper_functions/validator.dart';
 import '../../../models/mechanic_data_model.dart';
 import '../../../provider/mechanic_data_provider.dart';
 import 'machanic_page1.dart';
-import 'machanic_page4.dart';
 
 class MachanicPage3 extends StatefulWidget {
-
   final NextPageCallback onNextPage;
 
-  const MachanicPage3({Key? key,required this.onNextPage}) : super(key: key);
+  const MachanicPage3({Key? key, required this.onNextPage}) : super(key: key);
 
   @override
   State<MachanicPage3> createState() => _MachanicPage3State();
 }
 
-class _MachanicPage3State extends State<MachanicPage3> {
-  final _controllermachanicorgname = TextEditingController();
-  final _controllermachanicshopname = TextEditingController();
-  final _controllermachanicownername = TextEditingController();
-  final _controllermachanicownerphoneno = TextEditingController();
+class _MachanicPage3State extends State<MachanicPage3>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  final _orgNameController = TextEditingController();
+  final _ownerNameController = TextEditingController();
+  final _ownerPhoneNoController = TextEditingController();
   double dist = 10;
 
+  @override
+  void initState() {
+    super.initState();
+
+    // Fetch the Organization data from the provider
+    final dataProvider =
+        Provider.of<MechanicDataProvider>(context, listen: false);
+    final page3Data = dataProvider.page3Data;
+
+    // Autofill the TextEditingControllers with page3Data
+    _orgNameController.text = page3Data.orgName ?? '';
+    _ownerNameController.text = page3Data.ownerName ?? '';
+    _ownerPhoneNoController.text = page3Data.ownerPhoneNo ?? '';
+  }
 
   // keys
   final _key = GlobalKey<FormState>();
+
   // focusNodes
   final phoneFocus = FocusNode();
   final emailFocus = FocusNode();
@@ -45,7 +59,7 @@ class _MachanicPage3State extends State<MachanicPage3> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
         child: SingleChildScrollView(
           child: Form(
             key: _key,
@@ -53,16 +67,13 @@ class _MachanicPage3State extends State<MachanicPage3> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: dist),
-
                 const Text(
                   'Organization Details',
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
-
                 SizedBox(height: dist),
-
                 MyTextFormField(
-                  controller: _controllermachanicorgname,
+                  controller: _orgNameController,
                   onFieldSubmitted: (_) => nextFocus(phoneFocus),
                   label: "Organization Name:",
                   hintText: "Enter Organization Name",
@@ -73,19 +84,7 @@ class _MachanicPage3State extends State<MachanicPage3> {
                 ),
                 SizedBox(height: dist),
                 MyTextFormField(
-                  controller: _controllermachanicshopname,
-                  onFieldSubmitted: (_) => nextFocus(phoneFocus),
-                  label: "Workshop Name:",
-                  hintText: "Enter Workshop Name:",
-                  validator: (name) {
-                    if (name != null && name.trim().isNotEmpty) return null;
-                    return "Please enter name";
-                  },
-                ),
-
-                SizedBox(height: dist),
-                MyTextFormField(
-                  controller: _controllermachanicownername,
+                  controller: _ownerNameController,
                   onFieldSubmitted: (_) => nextFocus(phoneFocus),
                   label: "Owner Name:",
                   hintText: "Enter Owner Name",
@@ -94,11 +93,9 @@ class _MachanicPage3State extends State<MachanicPage3> {
                     return "Please enter name";
                   },
                 ),
-
                 SizedBox(height: dist),
-
                 MyTextFormField(
-                  controller: _controllermachanicownerphoneno,
+                  controller: _ownerPhoneNoController,
                   focusNode: phoneFocus,
                   label: "Owner Mobile No:",
                   hintText: "Enter Owner Mobile Number",
@@ -109,42 +106,27 @@ class _MachanicPage3State extends State<MachanicPage3> {
                   maxLength: 10,
                   validator: mobileValidate,
                 ),
-
                 SizedBox(height: dist),
-
                 MyButton2(
-                  text: 'Next',
+                  text: 'Save & Next',
                   onTap: () {
-
-
-                    if(_key.currentState !=null && _key.currentState!.validate()){
+                    if (_key.currentState != null &&
+                        _key.currentState!.validate()) {
                       print("Validated");
 
-                      final dataProvider =
-                      Provider.of<MechanicDataProvider>(context,
+                      final dataProvider = Provider.of<MechanicDataProvider>(
+                          context,
                           listen: false);
 
-                      final page3Data = MechanicPage3Data(
-                        organizationName: _controllermachanicorgname.text,
-                        ownerName: _controllermachanicshopname.text,
-                        workshopName: _controllermachanicownername.text,
-                        ownerPhoneNumber: _controllermachanicownerphoneno.text,
+                      final page3Data = Organization(
+                        orgName: _orgNameController.text,
+                        ownerName: _ownerNameController.text,
+                        ownerPhoneNo: _ownerPhoneNoController.text,
                       );
 
                       dataProvider.updatePage3Data(page3Data);
                       widget.onNextPage(); // Call the callback to switch tabs
-
-
-
                     }
-
-
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const MachanicPage4(),
-                    //   ),
-                    // );
                   },
                 ),
               ],
