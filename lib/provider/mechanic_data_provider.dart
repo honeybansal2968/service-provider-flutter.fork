@@ -3,6 +3,17 @@ import '../apis/michanic_api.dart';
 import '../models/mechanic_data_model.dart';
 
 class MechanicDataProvider with ChangeNotifier {
+
+  bool _isLoading = false;
+
+  bool get isLoading => _isLoading;
+
+  // Setter for isLoading
+  set isLoading(bool value) {
+    _isLoading = value;
+    notifyListeners();
+  }
+
   String _apiErrorMessage = '';
 
   String get apiErrorMessage => _apiErrorMessage;

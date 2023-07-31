@@ -18,6 +18,8 @@ class MechanicAPI {
         final responseData = jsonDecode(response.body);
         print("Mechanic signed up successfully");
         print(response.body);
+        print(responseData);
+
         return {'success': true, 'data': responseData};
       } else {
         // If API call fails, handle the error
