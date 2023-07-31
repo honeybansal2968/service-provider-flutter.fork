@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-Mechanic mechanicFromJson(String str) => Mechanic.fromJson(json.decode(str));
-
-String mechanicToJson(Mechanic data) => json.encode(data.toJson());
+// Mechanic mechanicFromJson(String str) => Mechanic.fromJson(json.decode(str));
+//
+// String mechanicToJson(Mechanic data) => json.encode(data.toJson());
 
 class Mechanic {
   String role;
