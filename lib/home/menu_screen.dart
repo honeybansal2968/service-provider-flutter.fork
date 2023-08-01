@@ -44,6 +44,10 @@ class _MenuScreenState extends State<MenuScreen> {
                           leading: Icon(Icons.person),
                           title: Text('Home'),
                           onTap: () {
+                            Get.to(HomePage());
+                            Get.to(IntegratedHome());
+
+
                             // Navigator.push(
                             //     context,
                             //     MaterialPageRoute(
@@ -60,6 +64,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             //     builder: (context) => BookingScreen(),
                             //   ),
                             // );
+                            Get.to(BookingPage());
                           }),
                       ListTile(
                         leading: Icon(Icons.category_sharp),

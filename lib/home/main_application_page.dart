@@ -15,9 +15,9 @@ class MainApplication extends StatefulWidget {
 
 class _MainApplicationState extends State<MainApplication> {
   final List<Widget> _screens = [
-    const HomePage(),
+    HomePage(),
     BookingPage(),
-    const emptypage(),
+    emptypage(),
     ProfileScreen(),
   ];
 
