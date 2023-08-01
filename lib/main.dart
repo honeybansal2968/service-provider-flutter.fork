@@ -1,6 +1,7 @@
 import 'package:authentication/authentication/login_or_register_page.dart';
 import 'package:authentication/provider/mechanic_data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
 import 'home/all_parts_integrated.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return GetMaterialApp(
       //debugShowCheckedModeBanner: false,
       home: LoginOrRegisterPage(),
     );

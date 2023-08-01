@@ -1,13 +1,15 @@
+import 'package:authentication/screens/help_support_screen.dart';
+import 'package:authentication/screens/licenses_screen.dart';
+import 'package:authentication/screens/privacy_policy.dart';
 import 'package:flutter/material.dart';
 import 'package:authentication/models/userModel.dart';
 import 'package:authentication/authentication/login_or_register_page.dart';
 import 'package:authentication/serivces/auth_service.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import 'all_parts_integrated.dart';
 import 'booking_tab_2.dart';
-import 'home_tab_1.dart';
 
 class MenuScreen extends StatefulWidget {
   final User data;
@@ -32,7 +34,7 @@ class _MenuScreenState extends State<MenuScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 CircleAvatar(
@@ -40,87 +42,59 @@ class _MenuScreenState extends State<MenuScreen> {
                   backgroundImage: NetworkImage(
                       data.photo),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Text(data.fullName),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 Expanded(
                   child: ListView(
                     children: [
                       ListTile(
-                          leading: Icon(Icons.person),
-                          title: Text('Home'),
+                          leading: const Icon(Icons.person),
+                          title: const Text('Home'),
                           onTap: () {
-                            Get.to(HomePage());
-
-
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => DrawerScreen(),
-                            //     ));
-                          }),
+                            if (ZoomDrawer.of(context)!.isOpen()) {
+                              ZoomDrawer.of(context)!.close();
+                            } else {
+                              ZoomDrawer.of(context)!.open();
+                            }
+                          },),
                       ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text('Booking'),
+                          leading: const Icon(Icons.settings),
+                          title: const Text('Booking'),
                           onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => BookingScreen(),
-                            //   ),
-                            // );
+
                             Get.to(BookingPage());
                           }),
                       ListTile(
-                        leading: Icon(Icons.category_sharp),
-                        title: Text('Privacy Policy'),
+                        leading: const Icon(Icons.category_sharp),
+                        title: const Text('Privacy Policy'),
                         onTap: () {
-                          // Add onTap logic here
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => PrivacyScreen(),
-                          //   ),
-                          // );
+                          Get.to(PrivacyPolicyPage());
+
                         },
                       ),
                       ListTile(
-                        leading: Icon(Icons.branding_watermark),
-                        title: Text('Licenses'),
+                        leading: const Icon(Icons.branding_watermark),
+                        title: const Text('Licenses'),
                         onTap: () {
-                          // Add onTap logic here
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => Licenses(),
-                          //   ),
-                          // );
+                          Get.to(LicensesPage());
                         },
                       ),
                       ListTile(
-                        leading: Icon(Icons.list_sharp),
-                        title: Text('Help & Support'),
+                        leading: const Icon(Icons.list_sharp),
+                        title: const Text('Help & Support'),
                         onTap: () {
-                          // Add onTap logic here
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => Help_Support(),
-                          //   ),
-                          // );
+                          Get.to(HelpAndSupportPage());
+
                         },
                       ),
                       ListTile(
-                        leading: Icon(Icons.logout),
-                        title: Text('Log Out'),
+                        leading: const Icon(Icons.logout),
+                        title: const Text('Log Out'),
                         onTap: () async {
                           await AuthService.logOut();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginOrRegisterPage(),
-                            ),
-                          );
+                          Get.offAll(() => const LoginOrRegisterPage());
+
                         },
                       ),
                     ],
@@ -133,12 +107,12 @@ class _MenuScreenState extends State<MenuScreen> {
             top: 40,
             left: 40,
             child: Container(
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.all(10.0),
+              decoration: const BoxDecoration(
                 color: Colors.yellow,
                 shape: BoxShape.circle,
               ),
-              child: Icon(Icons.star),
+              child: const Icon(Icons.star),
             ),
           ),
         ],
