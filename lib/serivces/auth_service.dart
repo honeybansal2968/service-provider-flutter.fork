@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:authentication/models/userModel.dart';
+import 'package:logger/logger.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'dart:developer';
 
 class AuthService {
   static final GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -21,9 +23,18 @@ class AuthService {
       // Trigger the Google sign-in flow
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
+      print(googleUser);
+      // print("Hello World!!!!!!!!!!!!!!!!!!!!!");
+
       if (googleUser != null) {
         final GoogleSignInAuthentication googleAuth =
-            await googleUser.authentication;
+        await googleUser.authentication;
+
+        print("idToken: ${googleAuth.idToken}");
+        // final logger = Logger();
+        // logger.d(googleAuth.idToken);
+        log(googleAuth.idToken as String);
+
 
         final response = await http.post(
           Uri.parse(
