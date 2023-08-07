@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:authentication/models/userModel.dart';
-import 'package:logger/logger.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'dart:developer';
@@ -44,6 +43,8 @@ class AuthService {
             'userType': userType,
           },
         );
+
+        // print(response.body);
 
         if (response.statusCode == 200) {
           final jsonData = json.decode(response.body);

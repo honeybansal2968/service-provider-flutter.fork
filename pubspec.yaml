@@ -74,6 +74,7 @@ flutter:
     - lib/assets/images/cleaning-staff.png
     - lib/assets/images/google.png
     - lib/assets/images/google2.png
+    - lib/assets/files/DATA.js
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

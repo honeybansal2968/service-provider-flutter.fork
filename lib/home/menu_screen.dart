@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:authentication/models/userModel.dart';
+import 'package:authentication/authentication/login_or_register_page.dart';
+import 'package:authentication/serivces/auth_service.dart';
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+  final User data;
+
+  const MenuScreen(this.data, {Key? key}) : super(key: key);
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
@@ -10,6 +15,9 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
+
+    final User data = widget.data;
+
     return Scaffold(
       backgroundColor: Colors.blue,
       body: Stack(
@@ -24,10 +32,10 @@ class _MenuScreenState extends State<MenuScreen> {
                 CircleAvatar(
                   radius: 50.0,
                   backgroundImage: NetworkImage(
-                      'https://source.unsplash.com/50x50/?portrait'),
+                      data.photo),
                 ),
                 SizedBox(height: 10.0),
-                Text('User Name'),
+                Text(data.fullName),
                 SizedBox(height: 20.0),
                 Expanded(
                   child: ListView(
@@ -96,13 +104,13 @@ class _MenuScreenState extends State<MenuScreen> {
                         leading: Icon(Icons.logout),
                         title: Text('Log Out'),
                         onTap: () async {
-                          // await FirebaseAuth.instance.signOut();
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const AuthScreen(),
-                          //   ),
-                          // );
+                          await AuthService.logOut();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginOrRegisterPage(),
+                            ),
+                          );
                         },
                       ),
                     ],

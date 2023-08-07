@@ -20,21 +20,21 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    loadData();
+    // loadData();
   }
 
-  Future<void> loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    final ongoingRequestJson =
-        await rootBundle.loadString("lib/assets/files/DATA.js");
-    final decodedData = jsonDecode(ongoingRequestJson);
-    var productsData = decodedData["products"];
-    setState(() {
-      data = List.from(productsData)
-          .map((item) => Item.fromMap(item).toMap())
-          .toList();
-    });
-  }
+  // Future<void> loadData() async {
+  //   await Future.delayed(const Duration(seconds: 2));
+  //   final ongoingRequestJson =
+  //       await rootBundle.loadString("lib/assets/files/DATA.js");
+  //   final decodedData = jsonDecode(ongoingRequestJson);
+  //   var productsData = decodedData["products"];
+  //   setState(() {
+  //     data = List.from(productsData)
+  //         .map((item) => Item.fromMap(item).toMap())
+  //         .toList();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

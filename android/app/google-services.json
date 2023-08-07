@@ -1,102 +1,41 @@
 {
   "project_info": {
-    "project_number": "492641475522",
-    "project_id": "helpy-moto-388307",
-    "storage_bucket": "helpy-moto-388307.appspot.com"
+    "project_number": "8180335810",
+    "project_id": "test-auth-90620",
+    "storage_bucket": "test-auth-90620.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:492641475522:android:7732dcf0460cdc8828945b",
+        "mobilesdk_app_id": "1:8180335810:android:0217c53a00ea2dc9c8675b",
         "android_client_info": {
           "package_name": "com.example.authentication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "492641475522-g35a233v6meen07nenmuln2vr8pa8687.apps.googleusercontent.com",
+          "client_id": "8180335810-abj5t25jfkt9n416pon6lj342c0ojhoh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.authentication",
-            "certificate_hash": "47821643d93c7dc6ac1e327956d14953167af3c9"
+            "certificate_hash": "db335131065f97e7b063ec74ed75bb08893c779b"
           }
         },
         {
-          "client_id": "492641475522-gauqf1kum8cag7r96vvvqd9o2nqp8f3l.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.authentication",
-            "certificate_hash": "be5bd94cca1e0c632b79325c1012992b6e5f5a4b"
-          }
-        },
-        {
-          "client_id": "492641475522-m3g17mvjspn42c9pb6mn2phd3084hs4b.apps.googleusercontent.com",
+          "client_id": "8180335810-rhckjrc84b54e1cgs2logveosc4npr6o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDy6xsJe6O7SYAoGFDgsjfihrpkzjn04Dc"
+          "current_key": "AIzaSyA4YJ3axc6CNVmmW5yQhDrlbc5aK7v2Lls"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "492641475522-6lu77i986mc7jubksogi8ghruajpsvfp.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:492641475522:android:04c45f2ea096b58228945b",
-        "android_client_info": {
-          "package_name": "com.example.reelsapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "492641475522-1vp7oacnfvkib5223kbl3f0al27fe3ik.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.reelsapp",
-            "certificate_hash": "be5bd94cca1e0c632b79325c1012992b6e5f5a4b"
-          }
-        },
-        {
-          "client_id": "492641475522-qfmokraetuncrbntck4ugleiecps1cdr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.reelsapp",
-            "certificate_hash": "47821643d93c7dc6ac1e327956d14953167af3c9"
-          }
-        },
-        {
-          "client_id": "492641475522-v2ahdcp34fq46opuofjuf8ii782crv8p.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.reelsapp",
-            "certificate_hash": "7c6fa319c7e781eafc184ee5b47dce06eb9c0753"
-          }
-        },
-        {
-          "client_id": "492641475522-m3g17mvjspn42c9pb6mn2phd3084hs4b.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDy6xsJe6O7SYAoGFDgsjfihrpkzjn04Dc"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "492641475522-6lu77i986mc7jubksogi8ghruajpsvfp.apps.googleusercontent.com",
+              "client_id": "8180335810-rhckjrc84b54e1cgs2logveosc4npr6o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

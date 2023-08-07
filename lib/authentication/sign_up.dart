@@ -243,13 +243,14 @@ class _SignupPageState extends State<SignupPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const IntegratedHome()),
+                                            IntegratedHome(data)),
                                   );
                                 }
                               } catch (err) {
                                 setState(() {
                                   _loading = false;
                                 });
+                                print(err);
                                 await AuthService.logOut();
                               }
                             },

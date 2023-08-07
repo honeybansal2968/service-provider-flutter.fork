@@ -205,7 +205,7 @@ class _SigninPageState extends State<SigninPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const IntegratedHome()),
+                                              IntegratedHome(data)),
                                     );
                                   }
                                 } catch (err) {

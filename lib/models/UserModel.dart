@@ -33,11 +33,10 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      fullName: json['fullName'],
-      email: json['email'],
-      photo: json['photo'],
+      fullName: json['generalDetails']['fullName'],
+      email: json['generalDetails']['email'],
+      photo: json['generalDetails']['photo'],
       role: json['role'],
     );
   }
 }
-
