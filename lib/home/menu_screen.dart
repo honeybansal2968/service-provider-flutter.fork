@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:authentication/models/userModel.dart';
 import 'package:authentication/authentication/login_or_register_page.dart';
 import 'package:authentication/serivces/auth_service.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import 'all_parts_integrated.dart';
+import 'booking_tab_2.dart';
+import 'home_tab_1.dart';
 
 class MenuScreen extends StatefulWidget {
   final User data;
@@ -45,7 +51,6 @@ class _MenuScreenState extends State<MenuScreen> {
                           title: Text('Home'),
                           onTap: () {
                             Get.to(HomePage());
-                            Get.to(IntegratedHome());
 
 
                             // Navigator.push(

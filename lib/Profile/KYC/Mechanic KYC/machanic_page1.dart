@@ -1,10 +1,10 @@
 import 'package:authentication/components/my_text_form_field.dart';
+import 'package:authentication/helper_functions/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/my_button_2.dart';
-import '../../../helper_functions/validator.dart';
 import '../../../models/mechanic_data_model.dart';
 import '../../../provider/mechanic_data_provider.dart';
 

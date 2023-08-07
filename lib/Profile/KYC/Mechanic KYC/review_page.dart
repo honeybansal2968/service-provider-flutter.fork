@@ -1,3 +1,4 @@
+import 'package:authentication/home/home_tab_1.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../apis/michanic_api.dart';
@@ -196,7 +197,7 @@ class ReviewPage extends StatelessWidget {
                                   onClose: () {
                                     // No need to do anything here. The navigation will be handled by SuccessDialog.
                                   },
-                                  destinationPage: IntegratedHome(), // Specify the destination page here
+                                  destinationPage: HomePage(), // Specify the destination page here
                                 ),
                               );
                             } else {
