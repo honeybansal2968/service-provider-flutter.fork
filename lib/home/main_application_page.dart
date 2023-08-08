@@ -3,9 +3,12 @@ import 'package:authentication/home/booking_tab_2.dart';
 import 'package:authentication/home/order_page.dart';
 import 'package:authentication/home/home_tab_1.dart';
 import 'package:authentication/models/userModel.dart';
+import 'package:authentication/screens/notification_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class MainApplication extends StatefulWidget {
   const MainApplication( {super.key});
@@ -58,7 +61,9 @@ class _MainApplicationState extends State<MainApplication> {
         ),
         actions: <Widget>[
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(NotificationPage());
+            },
             child: const Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: Icon(Icons.notifications, color: Colors.blue),
