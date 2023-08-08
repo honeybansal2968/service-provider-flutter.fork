@@ -14,6 +14,7 @@ class _BookingPageState extends State<BookingPage> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text('Booking screen'),
           bottom: TabBar(
             tabs: const [
