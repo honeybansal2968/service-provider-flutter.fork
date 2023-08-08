@@ -23,7 +23,7 @@ class _IntegratedHomeState extends State<IntegratedHome> {
     return ZoomDrawer(
       controller: zoomDrawerController,
       menuScreen: MenuScreen(data),
-      mainScreen: const MainApplication(),
+      mainScreen: MainApplication(),
       showShadow: true,
       style: DrawerStyle.defaultStyle,
       moveMenuScreen: false,

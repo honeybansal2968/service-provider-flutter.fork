@@ -1,13 +1,14 @@
 import 'package:authentication/Profile/profile.dart';
 import 'package:authentication/home/booking_tab_2.dart';
-import 'package:authentication/home/emptypage.dart';
+import 'package:authentication/home/order_page.dart';
 import 'package:authentication/home/home_tab_1.dart';
+import 'package:authentication/models/userModel.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class MainApplication extends StatefulWidget {
-  const MainApplication({super.key});
+  const MainApplication( {super.key});
 
   @override
   State<MainApplication> createState() => _MainApplicationState();
@@ -17,7 +18,7 @@ class _MainApplicationState extends State<MainApplication> {
   final List<Widget> _screens = [
     HomePage(),
     BookingPage(),
-    emptypage(),
+    OrderDetailsPage(),
     ProfileScreen(),
   ];
 
