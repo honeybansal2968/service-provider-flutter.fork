@@ -9,7 +9,6 @@ import 'package:latlong2/latlong.dart';
 
 import 'mapbox_searchmodel.dart';
 import 'model.dart';
-
 import 'provider.dart';
 
 

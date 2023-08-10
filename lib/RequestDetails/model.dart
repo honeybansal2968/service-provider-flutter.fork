@@ -70,6 +70,7 @@ class Ticket {
     required this.mechanicId,
   });
 
+
   factory Ticket.fromJson(Map<String, dynamic> json) {
     return Ticket(
       //currentLocation: Location.fromJson(json["currentLocation"]),

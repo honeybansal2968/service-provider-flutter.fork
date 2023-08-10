@@ -19,6 +19,7 @@ class SearchPlaces {
   }
 }
 
+
 class Geometry {
   String? type;
   List<double>? coordinates;
