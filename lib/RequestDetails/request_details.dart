@@ -1,17 +1,10 @@
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 
-import 'mapbox_searchmodel.dart';
-import 'model.dart';
 import 'provider.dart';
-
-
 
 class RequestDetails extends ConsumerStatefulWidget {
   String ticketID;
